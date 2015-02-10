@@ -7,19 +7,19 @@
         <title>Pinboard Admin</title>
 
         <c:url value='/resources' var="resourcesUrl" />
-        <!-- CSS Files -->
-        <!-- External-->
+
+        <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
 
-        <!--Internal -->
+        <!--Internal CSS Files -->
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
 
-        <!-- JavaScript Files -->
-        <!--External-->
+
+        <!--External JavaScript Files-->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
 
-        <!--Internal-->
+        <!--Internal JavaScript Files-->
         <script src="${resourcesUrl}/js/utils.js"></script>
         <script src="${resourcesUrl}/js/components/itemsList.js"></script>
         <script src="${resourcesUrl}/js/admin.js"></script>
@@ -37,7 +37,9 @@
 
         <div role="tabpanel">
 
-            <!-- Nav tabs -->
+            <!-- Creation of different tabs on navigation menu: Home, Add Item, Delete Item  
+                 data-toggle="tab" is used to create tab components. 
+            -->
             <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
                 <li role="presentation" class="active">
                     <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
@@ -50,7 +52,10 @@
                 </li>
             </ul>
 
-            <!-- Tab panes -->
+            <!-- Bootstrap Tabs via Data Attributes.
+                 Ref: [1] a. Mark Otto, 'JavaScript · Bootstrap', Getbootstrap.com, 2015. [Online]. Available: http://getbootstrap.com/javascript/. [Accessed: 04- Feb- 2015].
+                 tab-content represents the parent element
+            -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="home">
                     <div class="jumbotron">
@@ -63,13 +68,11 @@
                     <form class="form" id="registrationForm" action="${addUrl}" method="POST">
                         <h2 class="form-heading">Add New Item</h2>
 
-                        <input class="form-control" type="text" name="name" placeholder="Item Name" />
-                        <input class="form-control" type="text" name="genres" placeholder="Genres (Comma Separated)" />
-                        <input class="form-control" type="text" name="startDate" placeholder="Start Date" />
-                        <input class="form-control" type="text" name="endDate" placeholder="End Date" />
-                        <input class="form-control" type="text" name="location.name" placeholder="Location" />
-                        <input class="form-control last-input" type="text" name="website" placeholder="Item specification"
-                               data-validation="url" />
+                        <input class="form-control" type="text" name="title" placeholder="Item Title" />
+                        <input class="form-control" type="text" name="description" placeholder="Description" />
+                        <input class="form-control" type="double" name="price" placeholder="Price" />
+                        <input class="form-control" type="text" name="category" placeholder="Category" />
+                        
                         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Add" />
                         <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     </form>

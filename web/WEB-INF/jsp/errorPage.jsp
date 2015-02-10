@@ -7,17 +7,15 @@
         <title>Access Denied</title>
         <c:url value='/resources' var="resourcesUrl" />
 
-        <!-- CSS Files -->
-        <!-- External-->
+        <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
 
-        <!--Internal-->        
+        <!--Internal CSS Files-->        
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/errorPage.css" />
     </head>
     <body>
         <div class="jumbotron">
             <h1>Access Denied</h1>
-            <img src="${resourcesUrl}/images/errorPage.jpg" alt="" />
             <p><a class="btn btn-primary btn-lg back-to-home" href="/Pinboard/index">Back to home</a></p>
         </div>
     </body>

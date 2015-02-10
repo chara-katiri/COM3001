@@ -1,0 +1,8 @@
+body {
+    padding-top: 20px;
+    background-color: #eee;
+}
+
+.back-to-home, h1 {
+    margin-left: 20px;
+}

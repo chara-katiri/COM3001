@@ -1,0 +1,19 @@
+.share-button {
+    margin-bottom: 30px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.featurette {
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    display: none;
+}

@@ -8,19 +8,17 @@
         <title>Favourites</title>
 
         <c:url value='/resources' var="resourcesUrl" />
-        <!-- CSS Files -->
-        <!-- External-->
+        <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
 
-        <!--Internal-->        
+        <!--Internal CSS Files-->        
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/favourites.css" />
 
-        <!-- JavaScript Files -->
-        <!--External-->
+        <!--External JavaScript Files-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- JQuery -->
 
-        <!--Internal-->
+        <!--Internal JavaScript Files-->
         <script src="${resourcesUrl}/js/utils.js"></script>
         <script src="${resourcesUrl}/js/components/itemsList.js"></script>
         <script src="${resourcesUrl}/js/favourites.js"></script>
@@ -38,6 +36,8 @@
 
         <div class="itemsList"></div>
 
+        
+        <!--        Functionality to allow the user navigate back to Home page-->
         <p><a class="btn btn-primary btn-lg back-to-home" href="/Pinboard/index">Back to home</a></p>
     </body>
 </html>

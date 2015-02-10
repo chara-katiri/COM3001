@@ -7,28 +7,27 @@
         <title>Register</title>
 
         <c:url value='/resources' var="resourcesUrl" />
-        <!-- CSS Files -->
-        <!-- External-->
+        <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
 
-        <!--Internal -->
+        <!--Internal CSS Files-->
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
 
-        <!-- JavaScript Files -->
-        <!--External-->
+        <!--External JavaScript Files-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- JQuery -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
     </head>
 
     <body>
+        <!--  Use of c:url tag to store the URL and its child parameters as a variable.
+        JSTL Core c:url tag,2015.[Online].Available: http://www.tutorialspoint.com/jsp/jstl_core_url_tag.htm [Accessed: 09-Feb-2015]-->
         <c:url value='/register' var="registerUrl"></c:url>
         <form class="form" id="registrationForm" action="${registerUrl}" method="POST">
             <h2 class="form-heading">Register New User</h2>
 
-            <input class="form-control" type="text" name="username" placeholder="Username"
+            <input class="form-control" type="text" name="username" placeholder="You university Username"
                    data-validation="length alphanumeric" 
                    data-validation-length="4-12"
-                   data-validation-error-msg="The username must be at least 4 characters long " />
+                   data-validation-error-msg="The username must be at least 4 characters long. Format: 'aa00001' " />
             <input class="form-control" type="password" name="pass_confirmation" placeholder="Password (Min 8 Characters)"
                    data-validation="length"
                    data-validation-length="min8"
@@ -41,8 +40,8 @@
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register" />
             <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-            <a class="btn btn-primary" href="/Finding-Festivals-Forever/index">Back to home</a>
-            <a class="btn btn-primary" href="/Finding-Festivals-Forever/login">Login</a>
+            <a class="btn btn-primary" href="/Pinboard/index">Back to home</a>
+            <a class="btn btn-primary" href="/Pinboard/login">Login</a>
         </form>
 
         <script src="${resourcesUrl}/js/register.js"></script>

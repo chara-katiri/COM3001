@@ -7,11 +7,10 @@
         <title>Register Result</title>
 
         <c:url value='/resources' var="resourcesUrl" />
-        <!-- CSS Files -->
-        <!-- External-->
+        <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
 
-        <!--Internal-->
+        <!--Internal CSS Files-->
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/result.css" />
     </head>
     <body>
@@ -22,11 +21,11 @@
 
             <c:choose>
                 <c:when test="${result eq 'success'}">
-                    <h3 class="success">Successfully registered.<br/>Please proceed to login below</h3>
+                    <h3 class="success"> Registered successfully.<br/>Please login below</h3>
                     <a class="btn btn-primary" href="${loginUrl}">Login</a>
                 </c:when>
                 <c:when test="${result eq 'alreadyexists'}">
-                    <h3 class="alreadyexists">That user already exists.<br/>Please proceed to login below</h3>
+                    <h3 class="alreadyexists"> User already exists.<br/>Please login below</h3>
                     <a class="btn btn-primary" href="${loginUrl}">Login</a>
                 </c:when>
                 <c:otherwise>

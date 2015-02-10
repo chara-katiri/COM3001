@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>--%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 
 <html>
@@ -9,20 +9,18 @@
         <title>Pinboard</title>
 
         <c:url value='/resources' var="resourcesUrl" />
-        <!-- CSS Files -->
-        <!-- External-->
+        <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
 
-        <!--Internal-->
+        <!--Internal CSS Files-->
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/default.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
 
-        <!-- JavaScript Files -->
-        <!--External-->
+        <!--External JavaScript Files-->
         <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google+ Share -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script> <!-- JQuery Form Validator -->
 
-        <!--Internal-->
+        <!--Internal JavaScript Files-->
         <script src="${resourcesUrl}/js/utils.js"></script>
         <script src="${resourcesUrl}/js/share.js"></script>
         <script src="${resourcesUrl}/js/default.js"></script>
@@ -31,7 +29,7 @@
     <body>
         <div id="pageContextPath" data-page-context="${pageContext.request.contextPath}"></div>
         <div class="authorizeUser">
-            <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+            <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"> 
                 <div class="toggleFavourite"></div>
             </sec:authorize>
         </div>
@@ -43,18 +41,15 @@
         </script>
 
 
-        <!-- Nav Bar
+        <!-- Nav Bar 
         ================================================== -->
 
         <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <!-- The line below is invalid HTML, but I do not know how to make it valid. The error is: "The element button must not appear as a descendant of the a element." -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+
                     </button>
                     <a class="navbar-brand" href="#">Pinboard</a>
                 </div><!-- /.navbar-header -->
@@ -68,7 +63,8 @@
                             <c:when test="${pageContext.request.userPrincipal.name != null}">
                                 <li><a>Welcome <c:out value="${pageContext.request.userPrincipal.name}" /></a></li>
                                 <li><a href="javascript:formSubmit()">Logout</a></li>
-
+                                <!--only users with admin rights are able to delete items that were not create by them. 
+                                This is for maintenance purposes. -->
                                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                                     <c:url value='/items/manage' var="manageItemsUrl" />
                                     <li>
@@ -78,7 +74,7 @@
                             </c:when>
 
                             <c:otherwise>
-
+                               
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -92,15 +88,18 @@
                                     </ul>
                                 </li>
 
+                                 <!-- Client side validation. 
+                                Client side controls are not used as a security measure because they can be easily bypassed. Client side validation is used for user's convenience to ensure valid values. 
+                                Server side validation is also used in the form of prepared statements to ensure that data retrieved from users are safe and the application can trust them. -->
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Register<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <c:url value='/register' var="registerUrl" />
                                         <form class="navbar-form" name="registrationForm" action="${registerUrl}" method="POST">
-                                            <input class="form-control" type="text" name="username" placeholder="Username"
+                                            <input class="form-control" type="text" name="username" placeholder="Your university username"
                                                    data-validation="length alphanumeric" 
                                                    data-validation-length="4-12"
-                                                   data-validation-error-msg="The username must be at least 4 characters long " />
+                                                   data-validation-error-msg="The username must be at least 4 characters long. Format: 'aa00001' " />
                                             <input class="form-control" type="password" name="pass_confirmation" placeholder="Password (Min 8 Characters)"
                                                    data-validation="length"
                                                    data-validation-length="min8"
@@ -122,7 +121,10 @@
                         <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
                             <c:url value="/logout" var="logoutUrl" />
 
-                            <form action="${logoutUrl}" method="post" id="logoutForm">
+<!-- Protection against CRSF attack. 
+Hackers use Cross-Site Request Forgery attack in order to steal the cookies from the authenticated user. 
+Docs.spring.io, 'Spring Security Reference', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-using. [Accessed: 09- Feb- 2015].-->
+                            <form action="${logoutUrl}" method="POST" id="logoutForm">
                                 <input type="hidden" name="${_csrf.parameterName}"
                                        value="${_csrf.token}" />
                             </form>
@@ -145,7 +147,7 @@
 
         <hr class="featurette-divider">
 
-        <!-- dynamically appearing and smooth scrolling back to top of page button -->
+        <!-- Back to top button. It appears dynamically and once clicked to page scrolls back to top smoothly -->
         <a href="#" class="back-to-top btn btn-default">Back to Top </a> 
 
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>

@@ -1,0 +1,37 @@
+.itemsList {
+    overflow: hidden;
+}
+
+.itemsList .item {
+    display: inline-block;
+    width: 45%;
+    margin: 0.5em;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.itemsList .item .itemName {
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.itemsList .item .itemData {
+    display: none;
+    padding: 10px;
+}
+
+.itemsList .item .itemData .toggleFavourite,
+.itemsList .item .itemData .deleteItem {
+    cursor: pointer;
+    width: 100%;
+}
+
+.itemsList .item .itemData .id,
+.itemsList .item .itemData .title,
+.itemsList .item .itemData .description,
+.itemsList .item .itemData .price,
+.itemsList .item .itemData .category,
+.itemsList .item .itemData .flags,
+
+
