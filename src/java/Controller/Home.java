@@ -18,9 +18,9 @@ public class Home {
     }
     
 //if request for mapping is unsuccessful return error 403. Point user to error page 403.
-    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    @RequestMapping(value = "/errorPage", method = RequestMethod.GET)
     public String accessDeniedPage() {
-        return "403";
+        return "errorPage";
     }
 
 }
