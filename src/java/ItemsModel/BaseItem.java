@@ -12,8 +12,8 @@ public class BaseItem implements IItem {
     private double price;
     private String category;
 
-    public BaseItem (int itemsID, String title, String description), double price, string category{
-    this itemsID=itemsID;
+    public BaseItem (int itemsID, String title, String description, double price, String category){
+    this.itemsID=itemsID;
     this.title=title;
     this.description=description; 
     this.price=price;

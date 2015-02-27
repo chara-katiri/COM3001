@@ -18,7 +18,7 @@ public class ConfigurationReader {
      * Parameter 'resourceLocation' is used to identify the location of properties file
      */
     
-      public static Properties loadConfigFile(String resourceLocation) {
+      public static Properties loadConfigurationFile(String resourceLocation) {
         InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceLocation);
         Properties prop = new Properties();
         

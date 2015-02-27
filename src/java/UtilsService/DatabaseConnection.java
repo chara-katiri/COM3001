@@ -44,8 +44,10 @@ public class DatabaseConnection {
         String dbName = config.getPropertyValue("dbName");
         String userName = config.getPropertyValue("dbUserName");
         String password = config.getPropertyValue("dbPassword");
+        String driver=config.getPropertyValue("dbDriver");
 
         try {
+            Class.forName(driver).newInstance();
             conn = DriverManager.getConnection(url + dbName, userName, password);
         } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, "Error connecting to database", ex);

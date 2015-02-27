@@ -1,6 +1,6 @@
 package SecurityService;
 
-import items.service.utils.ConfigFileProperties;
+import UtilsService.ConfigurationFileProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -21,7 +21,7 @@ public class ApplicationConfig {
         @Bean(name = "dataSource")
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource source = new DriverManagerDataSource();
-        ConfigFileProperties config = ConfigFileProperties.getInstance();
+        ConfigurationFileProperties config = ConfigurationFileProperties.getInstance();
 
         source.setUrl(config.getPropertyValue("dbUrl") + config.getPropertyValue("dbName"));
         source.setUsername(config.getPropertyValue("dbUserName"));

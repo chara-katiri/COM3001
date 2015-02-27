@@ -27,13 +27,13 @@ public class ConfigurationFileProperties {
     }
 
     /**
-     * Accessor for the values of the configuration file.
+     * Accessing the values of the configuration file.
      * Parameter 'key' is used to retrieve the key.       
      */
     public String getPropertyValue(String key) {
         
         //the return statement will return the value of the key. If the properties file doen't exist it will return an empty string. 
-        return prop != null ? prop.getProperty(key) : ApplicationConstants.EMPTY_STRING;
+        return prop != null ? prop.getProperty(key) : Constants.EMPTY_STRING;
     }
 
 }

@@ -7,8 +7,8 @@ import java.util.Map;
  */
 public class RoomItem extends BaseItem{
 
-    public RoomItem(int itemsID, String title, String description) {
-        super(itemsID, title, description);
+    public RoomItem(int itemsID, String title, String description, double price, String category) {
+        super(itemsID, title, description, price, category);
     }
     
 }

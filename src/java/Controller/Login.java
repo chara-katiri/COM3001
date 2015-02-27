@@ -1,9 +1,9 @@
 package Controller;
 
-import items.model.user.RegisterResult;
-import items.model.user.User;
-import items.service.utils.DatabaseConnection;
-import items.service.utils.Utilities;
+import UserModel.RegisterResult;
+import UserModel.User;
+import UtilsService.DatabaseConnection;
+import UtilsService.Utils;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
@@ -99,7 +99,7 @@ public class Login {
         if (userAlreadyExists(user)) {
             registerResult = RegisterResult.USER_ALREADY_EXISTS;
         } else {
-            String hashedPassword = Utilities.encodePassword(user.getPass());
+            String hashedPassword = Utils.encodePassword(user.getPassword());
             String insertUser = "INSERT INTO users (username, password, enabled) VALUES (?,?,1);";
             String insertRole = "INSERT INTO user_roles (username, ROLE) VALUES (?, 'ROLE_USER');";
 

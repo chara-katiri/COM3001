@@ -1,6 +1,7 @@
 package Controller;
 
-import items.service.utils.DatabaseConnection;
+
+import UtilsService.DatabaseConnection;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -85,9 +86,11 @@ public class Favourites {
             String addFavourite = "SELECT Username, Favourite FROM user_favourites WHERE Username = ? AND Favourite = ?";
             String username = principal.getName();
 
-            List<Map<String, Object>> res = dbConnection.queryDB(addFavourite, Arrays.asList("Username", "Favourite"), username, itemId);
-            if (res.size() > 0) {
-                return true;
+            List<Map<String, Object>> res;
+            try {
+                res = dbConnection.queryDB(addFavourite, Arrays.asList("Username", "Favourite"), username, itemId);
+            } catch (SQLException ex) {
+                Logger.getLogger(Favourites.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         

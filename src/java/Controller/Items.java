@@ -1,10 +1,9 @@
 package Controller;
 
-import items.model.item.BaseItem;
-import items.model.item.IItem;
-import items.model.item.Location;
-import items.service.utils.DatabaseConnection;
-import java.math.BigDecimal;
+import ItemsModel.BaseItem;
+import ItemsModel.BookItem;
+import ItemsModel.IItem;
+import UtilsService.DatabaseConnection;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class Items {
     //  Request Mapping to the database and retrive all the items currently stored in it. 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List<IItem> getItems() {
+    public List<IItem> getItems() throws SQLException {
         String queryItems = "SELECT * FROM items;";
         return constructItemsList(queryItems);
     }
@@ -40,7 +39,7 @@ public class Items {
     @ResponseBody
 
     //Get the user details autowired using Principal principal. Collect the details of the user currently logged in. 
-    public List<IItem> getItemsFavourites(Principal principal) {
+    public List<IItem> getItemsFavourites(Principal principal) throws SQLException {
         String queryFavourites = "SELECT i.ItemsID, i.Title, i.Description, i.Price, i.Category "
                 + "FROM items i "
                 + "INNER JOIN user_favourites uf "
@@ -88,7 +87,7 @@ public class Items {
 
         String removeFavourite = "DELETE FROM items WHERE ItemsID=?";
 
-        dbConnection.updateDB(removeItem, itemId);
+        dbConnection.updateDB(removeFavourite, itemId);
 
         return "admin";
     }
@@ -96,9 +95,10 @@ public class Items {
     //Create a list that contains all the items that need to be returned to the user. 
     //Parameter 'sqlQuery' defines the items that need to be returned. 
     //Parameter 'params' defines the parameters for the SQL query.
-    private List<IItem> constructItemsList(String sqlQuery, Object... params) {
+    private List<IItem> constructItemsList(String sqlQuery, Object... params) throws SQLException {
         List<IItem> items = new ArrayList<>();
 
+     
         List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID", "Title", "Description", "Price", "Category"), params);
 
         //the loop will return the list of items to the user
@@ -107,28 +107,16 @@ public class Items {
             int id = (int) r.get("itemsID ");
             String title = (String) r.get("Title");
             String description = (String) r.get("Decription");
-            int price = (int) r.get("Price");
+            double price = (double) r.get("Price");
             String category = (String) r.get("Category");
             Map flags = null;
 
         }
-        items.addNewItem(id, name, flags
-        ) 
-    );
-    }
-}
-
-        
-
-} catch (SQLException ex) {Logger.getLogger(LoginController.class  
-
-.getName()).log(Level.SEVERE, "Error executing SQL query", ex);
-        } 
-
-catch (NullPointerException ex) {Logger.getLogger(LoginController.class  
-
-.getName()).log(Level.SEVERE, "NullPointer from DB connection still not properly initialised", ex);
+        if (items.getCategory = BookItem){
+        items.add (new BookItem (id, title, decription, price, category) ); 
+    } else {
+        items.add (new RoomItem (id, title, decription, price, category) );
         }
         return items;
+
     }
-}

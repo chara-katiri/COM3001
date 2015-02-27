@@ -10,10 +10,10 @@ public class BookItem extends BaseItem{
 
 
 /**
- * Constructor for BookItem 
+ * Constructor for BookItem. Since BookItem extends BaseItem, 'super' is used to access  the BaseItem class instance. 
  */
-    public BookItem(int itemsID, String title, String description) {
-        super(itemsID, title, description);
+    public BookItem(int itemsID, String title, String description, double price, String category) {
+        super(itemsID, title, description, price, category);
     }
     
 }

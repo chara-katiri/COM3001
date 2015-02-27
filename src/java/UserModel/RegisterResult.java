@@ -8,7 +8,7 @@ public enum RegisterResult {
     /**
     * Successful registration of user
     */
-    SUCESS, 
+    SUCCESS, 
     
     /**
     * Error, user already exists in the database
