@@ -100,34 +100,17 @@ public class Items {
         List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID", "Title", "Description", "Price", "Category"), params);
 
         //the loop will return the list of items to the user
-        //for (Map<String, Object> r : res) {
-
-          //  ----------
             while (r.next()){
-                Map <String, Object> res=new HashMap<>();
+                Map <String, Object> res=new HashMap<>();// create a HashMap
+                ArrayList arrayList = mapList.get(key); //get the value from the HashMap againt the input key
+                arrayList.add(items);//add the items in the list
+                mapList.put(key,arraylist); //put the arrayList against the key value 
                 
-     /* if (items.category = 'BOOK'){
-              item.add(
-              new BookItem = BookItem){
-          itemsID, title, description, price, category);
-      } else { 
-               item.add(
-              new RoomItem = BookItem){
-          itemsID, title, description, price, category);
-              }
-            
-            }
-            
-            -----------
-            int id = (int) r.get("itemsID ");
-            String itemsTitle = (String) r.get("title");
-            String itemsDescription = (String) r.get("decription");
-            double itemsPrice = (double) r.get("price");
-            String itemsCategory = (String) r.get("category");
-        }
-*/
+                /*List<String> items = new List<String>();
+                items = res.values(); // by using 'values()'  the  method will return a list that containes all the values listed in the map. https://www.salesforce.com/us/developer/docs/apexcode/Content/apex_methods_system_map.htm
+                
         items.addItems (itemsID, title, decription, price, category);
-                }
+                }*/ 
             }
         return items;
 
