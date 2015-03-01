@@ -95,28 +95,41 @@ public class Items {
     //Create a list that contains all the items that need to be returned to the user. 
     //Parameter 'sqlQuery' defines the items that need to be returned. 
     //Parameter 'params' defines the parameters for the SQL query.
-    private List<IItem> constructItemsList(String sqlQuery, Object... params) throws SQLException {
+    private List<IItem> constructItemsList(String sqlQuery, Object... params) {
         List<IItem> items = new ArrayList<>();
-
-     
         List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID", "Title", "Description", "Price", "Category"), params);
 
         //the loop will return the list of items to the user
-        for (Map<String, Object> r : res) {
+        //for (Map<String, Object> r : res) {
 
+          //  ----------
+            while (r.next()){
+                Map <String, Object> res=new HashMap<>();
+                
+     /* if (items.category = 'BOOK'){
+              item.add(
+              new BookItem = BookItem){
+          itemsID, title, description, price, category);
+      } else { 
+               item.add(
+              new RoomItem = BookItem){
+          itemsID, title, description, price, category);
+              }
+            
+            }
+            
+            -----------
             int id = (int) r.get("itemsID ");
-            String title = (String) r.get("Title");
-            String description = (String) r.get("Decription");
-            double price = (double) r.get("Price");
-            String category = (String) r.get("Category");
-            Map flags = null;
-
+            String itemsTitle = (String) r.get("title");
+            String itemsDescription = (String) r.get("decription");
+            double itemsPrice = (double) r.get("price");
+            String itemsCategory = (String) r.get("category");
         }
-        if (items.getCategory = BookItem){
-        items.add (new BookItem (id, title, decription, price, category) ); 
-    } else {
-        items.add (new RoomItem (id, title, decription, price, category) );
-        }
+*/
+        items.addItems (itemsID, title, decription, price, category);
+                }
+            }
         return items;
 
-    }
+}
+
