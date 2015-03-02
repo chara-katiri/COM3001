@@ -26,7 +26,9 @@ public class Items {
     @Autowired
     private DatabaseConnection dbConnection;
 
-    //  Request Mapping to the database and retrive all the items currently stored in it. 
+    /*
+     *Request Mapping to the database and retrive all the items currently stored in it. 
+     */
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<IItem> getItems() throws SQLException {
@@ -34,11 +36,15 @@ public class Items {
         return constructItemsList(queryItems);
     }
 
-    //  Request Mapping to the database and retrive only the items that the currently logged in user set as favourites. 
+    /*
+     *Request Mapping to the database and retrive only the items that the currently logged in user set as favourites. 
+     */
     @RequestMapping(value = "/favourites", method = RequestMethod.GET)
     @ResponseBody
 
-    //Get the user details autowired using Principal principal. Collect the details of the user currently logged in. 
+    /*
+     *Get the user details autowired using Principal principal. Collect the details of the user currently logged in. 
+     */
     public List<IItem> getItemsFavourites(Principal principal) throws SQLException {
         String queryFavourites = "SELECT i.ItemsID, i.Title, i.Description, i.Price, i.Category "
                 + "FROM items i "
@@ -49,18 +55,18 @@ public class Items {
 
         List<IItem> items = new ArrayList<>();
 
-        // check that a user is currenlty logged in and return his name and favourites as a list
+        /*
+         *check that a user is currenlty logged in and return his name and favourites as a list
+         */
         if (principal != null) {
             String username = principal.getName();
             items = constructItemsList(queryFavourites, username);
         }
 
-        //Return the list of items 
-        return items;
+        return items;//Return the list of items 
     }
 
-    // Process for admins. Allow admins to manage items on the "manage" items page
-    @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN") // Process for admins. Allow admins to manage items on the "manage" items page
     // Request mapping to the manage page. The manage page will return the names of the items that can be managed by admins.
     @RequestMapping(value = "/manage", method = RequestMethod.GET)
     public String manageItems() {
@@ -80,8 +86,8 @@ public class Items {
         return "admin";
     }
 
-    //Process to allow admins remove items from the database. Parameter 'item' is the item to be removed.  
-    @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")    //Process to allow admins remove items from the database. Parameter 'item' is the item to be removed.  
+
     @RequestMapping(value = "/manage/remove", method = RequestMethod.POST)
     public String removeItem(int itemId) {
 
@@ -92,27 +98,26 @@ public class Items {
         return "admin";
     }
 
-    //Create a list that contains all the items that need to be returned to the user. 
-    //Parameter 'sqlQuery' defines the items that need to be returned. 
-    //Parameter 'params' defines the parameters for the SQL query.
+    /*
+     *Create a list that contains all the items that need to be returned to the user. 
+     *Parameter 'sqlQuery' defines the items that need to be returned. 
+     *Parameter 'params' defines the parameters for the SQL query.
+     */
     private List<IItem> constructItemsList(String sqlQuery, Object... params) {
         List<IItem> items = new ArrayList<>();
         List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID", "Title", "Description", "Price", "Category"), params);
 
-        //the loop will return the list of items to the user
-            while (r.next()){
-                Map <String, Object> res=new HashMap<>();// create a HashMap
-                ArrayList arrayList = mapList.get(key); //get the value from the HashMap againt the input key
-                arrayList.add(items);//add the items in the list
-                mapList.put(key,arraylist); //put the arrayList against the key value 
-                
-                /*List<String> items = new List<String>();
-                items = res.values(); // by using 'values()'  the  method will return a list that containes all the values listed in the map. https://www.salesforce.com/us/developer/docs/apexcode/Content/apex_methods_system_map.htm
-                
-        items.addItems (itemsID, title, decription, price, category);
-                }*/ 
-            }
+        while (r.next()) {//the loop will return the list of items to the user
+            Map<String, Object> res = new HashMap<>();// create a HashMap
+            ArrayList arrayList = mapList.get(key); //get the value from the HashMap againt the input key
+            arrayList.add(items);//add the items in the list
+            mapList.put(key, arraylist); //put the arrayList against the key value 
+
+            /*List<String> items = new List<String>();
+             items = res.values(); // by using 'values()'  the  method will return a list that containes all the values listed in the map. https://www.salesforce.com/us/developer/docs/apexcode/Content/apex_methods_system_map.html
+             items.addItems (itemsID, title, decription, price, category);
+             }*/
+        }
         return items;
 
-}
-
+    }

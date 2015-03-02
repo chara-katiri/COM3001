@@ -72,7 +72,7 @@
                         <input class="form-control" type="text" name="description" placeholder="Description" />
                         <input class="form-control" type="double" name="price" placeholder="Price" />
                         <input class="form-control" type="text" name="category" placeholder="Category" />
-                        
+
                         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Add" />
                         <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     </form>

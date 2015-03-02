@@ -1,8 +1,9 @@
 /* Used for global document, $, and Utils */
 var ItemsList = (function () {
-    
-    //Use of "use strict"; to define that JavaScript code should be executed in "strict mode" undeclared variables cannot be used..
-    //Source: W3schools.com, 'JavaScript "use strict"', 2015. [Online]. Available: http://www.w3schools.com/js/js_strict.asp. [Accessed: 10- Feb- 2015].
+
+    /* Use of "use strict"; to define that JavaScript code should be executed in "strict mode" undeclared variables cannot be used..
+     * Source: W3schools.com, 'JavaScript "use strict"', 2015. [Online]. Available: http://www.w3schools.com/js/js_strict.asp. [Accessed: 10- Feb- 2015].
+     */
     "use strict";
 
     var addItem, _createItemDiv, _addFavToggleIfAuthorized, _addDeleteButton;
@@ -17,12 +18,14 @@ var ItemsList = (function () {
         }
     };
 
-//Use of DOM appendChild method to append an item as the last child of a node in a list.
-//Source: W3schools.com, 'HTML DOM appendChild() Method', 2015. [Online]. Available: http://www.w3schools.com/jsref/met_node_appendchild.asp. [Accessed: 09- Feb- 2015]. 
+    /*
+     * Use of DOM appendChild method to append an item as the last child of a node in a list.
+     * Source: W3schools.com, 'HTML DOM appendChild() Method', 2015. [Online]. Available: http://www.w3schools.com/jsref/met_node_appendchild.asp. [Accessed: 09- Feb- 2015]. 
+     */
     _createItemDiv = function (itemData, addDelete) {
         var itemDiv = document.createElement("div"), //creation of <div> node itemDiv
-                nameDiv = document.createElement("div"), 
-                contentDiv = document.createElement("div"); 
+                nameDiv = document.createElement("div"),
+                contentDiv = document.createElement("div");
 
         itemDiv.classList.add("item");
         itemDiv.classList.add(itemData.id);
@@ -135,7 +138,7 @@ var ItemsList = (function () {
                     itemId: itemId
                 },
                 success: function () {
-                    var items= document.querySelectorAll(".item");
+                    var items = document.querySelectorAll(".item");
                     $.each(items, function () {
                         if (this.classList.contains(itemId)) {
                             this.parentElement.removeChild(this);
@@ -153,4 +156,4 @@ var ItemsList = (function () {
     };
 }());
 
-    
+

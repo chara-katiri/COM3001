@@ -26,10 +26,11 @@ public class Login {
     @Autowired
     private DatabaseConnection dbConnection;
 
-    
-    //Request mapping to login page and retrieve the model and view name. 
-    //Parameter 'error' is returned if the user attempts to login but the credentials submitted are invalid. 
-    //Parameter 'error' is an empty string. 
+    /*
+     *Request mapping to login page and retrieve the model and view name. 
+     *Parameter 'error' is returned if the user attempts to login but the credentials submitted are invalid. 
+     *Parameter 'error' is an empty string. 
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
             @RequestParam(value = "logout", required = false) String logout) {
@@ -39,37 +40,33 @@ public class Login {
             model.addObject("error", "Invalid username or password");
         }
 
-        //Parameter 'logout' can be used if the user is already logged in. Parameter 'logout' is an empty string. 
-        if (logout != null) {
+        if (logout != null) {        //Parameter 'logout' can be used if the user is already logged in. Parameter 'logout' is an empty string. 
             model.addObject("logout", "Logout Successful.");
         }
         model.setViewName("login");
 
-        // The return statement will return the ModelAndView for the login page along with appropriate messages. 
-        return model;
+        return model;         // The return statement will return the ModelAndView for the login page along with appropriate messages. 
+
     }
 
-   
-    //Request mapping to the register page. 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)     //Request mapping to the register page. 
+
     public String register() {
-        
-        //The return statement will return the file name of the register page.  
-        return "register";
+        return "register";         //The return statement will return the file name of the register page.  
     }
 
- 
-    //Request mapping to the 'register' page and use the POST method to register a new user.
-    //Parameter 'user' is the new user to be registered. 
-    //Parameter 'model' is used to display the register result message on result page.
+    /*
+     * Request mapping to the 'register' page and use the POST method to register a new user.
+     * Parameter 'user' is the new user to be registered. 
+     * Parameter 'model' is used to display the register result message on result page.
+     */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@ModelAttribute User user, ModelMap model) {
         dbConnection = DatabaseConnection.getInstance();
 
         RegisterResult registerResult = tryRegister(user);
 
-        //Once the user is registered naviaget to result page. 
-        String result;
+        String result; //Once the user is registered naviaget to result page.
         switch (registerResult) {
             case SUCCESS:
                 result = "success";
@@ -86,13 +83,14 @@ public class Login {
 
         model.addAttribute("result", result);
 
-        //The return statement will return the file name of the register page.  
-        return "result";
+        return "result"; //The return statement will return the file name of the register page. 
     }
 
 
-    //Process to register result and try to register the new user.
-    //Parameter 'user' is the user that the system will attempt to register. 
+    /*
+     * Process to register result and try to register the new user.
+     *Parameter 'user' is the user that the system will attempt to register.
+     */
     private RegisterResult tryRegister(User user) {
         RegisterResult registerResult = RegisterResult.FATAL_ERROR;
 
@@ -117,13 +115,14 @@ public class Login {
             }
         }
 
-        //The return statement will return the result of the attempt to register the user 
-        return registerResult;
+        return registerResult; //The return statement will return the result of the attempt to register the user
     }
 
 
-    //Search in the database to cofirm if the has already exists. 
-    //Parameter 'user' is used to query the user. The method returns the user if already exists. 
+    /*
+     *Search in the database to cofirm if the has already exists. 
+     *Parameter 'user' is used to query the user. The method returns the user if already exists. 
+     */
     private boolean userAlreadyExists(User user) {
         String queryUser = "SELECT username, password, enabled FROM users WHERE username = ? ";
         try {
@@ -135,4 +134,3 @@ public class Login {
         return false;
     }
 }
-

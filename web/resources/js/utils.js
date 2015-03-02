@@ -1,9 +1,11 @@
 /*Used for global document, $,  and window */
 var Utils = (function () {
     
-    //Use of "use strict"; to define that JavaScript code should be executed in "strict mode" undeclared variables cannot be used..
-    //W3schools.com, 'JavaScript "use strict"', 2015. [Online]. Available: http://www.w3schools.com/js/js_strict.asp. [Accessed: 10- Feb- 2015].
-    "use strict";
+    /*
+     * Use of "use strict"; to define that JavaScript code should be executed in "strict mode" undeclared variables cannot be used..
+     * W3schools.com, 'JavaScript "use strict"', 2015. [Online]. Available: http://www.w3schools.com/js/js_strict.asp. [Accessed: 10- Feb- 2015].
+     */
+   "use strict";
 
     var isValidVariable, isValidNonEmptyString, isValidFn,
             getPageContext, getCsrfToken, setUpDynamicBackToTop;
@@ -36,10 +38,11 @@ var Utils = (function () {
         return "";
     };
 
-
-// Smooth Back to top scrolling. 
-// Source: Developerdrive.developerdrive.netdna-cdn.com, 'Adding a dynamic "Back To Top" floating button with smooth scroll', 2015. [Online]. Available: http://developerdrive.developerdrive.netdna-cdn.com/wp-content/uploads/2013/07/scroll-to-top.html. [Accessed: 10- Feb- 2015].
-    setUpDynamicBackToTop = function () {
+/*
+ * Smooth Back to top scrolling. 
+ * Source: Developerdrive.developerdrive.netdna-cdn.com, 'Adding a dynamic "Back To Top" floating button with smooth scroll', 2015. [Online]. Available: http://developerdrive.developerdrive.netdna-cdn.com/wp-content/uploads/2013/07/scroll-to-top.html. [Accessed: 10- Feb- 2015]. 
+ */
+setUpDynamicBackToTop = function () {
         var offset = 220,
                 duration = 500;
         

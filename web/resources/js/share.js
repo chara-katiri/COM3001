@@ -1,11 +1,15 @@
 /* Used for global document, window and $ */
 
 
-//Share Pinboard on Facebook 
+/*
+ * Share Pinboard on Facebook 
+ */
 $(function (d, s, id) {
-    //Use of "use strict"; to define that JavaScript code should be executed in "strict mode" undeclared variables cannot be used..
-    //W3schools.com, 'JavaScript "use strict"', 2015. [Online]. Available: http://www.w3schools.com/js/js_strict.asp. [Accessed: 10- Feb- 2015].
-    
+    /*
+     * Use of "use strict"; to define that JavaScript code should be executed in "strict mode" undeclared variables cannot be used..
+     *  W3schools.com, 'JavaScript "use strict"', 2015. [Online]. Available: http://www.w3schools.com/js/js_strict.asp. [Accessed: 10- Feb- 2015].
+     */
+
     "use strict";
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
@@ -17,13 +21,16 @@ $(function (d, s, id) {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-
-//Share Pinboard on Twitter 
+/*
+ * Share Pinboard on Twitter
+ */
 $(function (d, s, id) {
-    
-    //Use of "use strict"; to define that JavaScript code should be executed in "strict mode".
-    //W3schools.com, 'JavaScript "use strict"', 2015. [Online]. Available: http://www.w3schools.com/js/js_strict.asp. [Accessed: 10- Feb- 2015].
-        "use strict";
+
+    /*
+     * Use of "use strict"; to define that JavaScript code should be executed in "strict mode".
+     * W3schools.com, 'JavaScript "use strict"', 2015. [Online]. Available: http://www.w3schools.com/js/js_strict.asp. [Accessed: 10- Feb- 2015].  
+     */
+    "use strict";
     var t, js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
         return;

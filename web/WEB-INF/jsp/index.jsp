@@ -74,7 +74,7 @@
                             </c:when>
 
                             <c:otherwise>
-                               
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -88,9 +88,9 @@
                                     </ul>
                                 </li>
 
-                                 <!-- Client side validation. 
-                                Client side controls are not used as a security measure because they can be easily bypassed. Client side validation is used for user's convenience to ensure valid values. 
-                                Server side validation is also used in the form of prepared statements to ensure that data retrieved from users are safe and the application can trust them. -->
+                                <!-- Client side validation. 
+                               Client side controls are not used as a security measure because they can be easily bypassed. Client side validation is used for user's convenience to ensure valid values. 
+                               Server side validation is also used in the form of prepared statements to ensure that data retrieved from users are safe and the application can trust them. -->
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Register<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -121,9 +121,9 @@
                         <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
                             <c:url value="/logout" var="logoutUrl" />
 
-<!-- Protection against CRSF attack. 
-Hackers use Cross-Site Request Forgery attack in order to steal the cookies from the authenticated user. 
-Docs.spring.io, 'Spring Security Reference', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-using. [Accessed: 09- Feb- 2015].-->
+                            <!-- Protection against CRSF attack. 
+                            Hackers use Cross-Site Request Forgery attack in order to steal the cookies from the authenticated user. 
+                            Docs.spring.io, 'Spring Security Reference', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-using. [Accessed: 09- Feb- 2015].-->
                             <form action="${logoutUrl}" method="POST" id="logoutForm">
                                 <input type="hidden" name="${_csrf.parameterName}"
                                        value="${_csrf.token}" />

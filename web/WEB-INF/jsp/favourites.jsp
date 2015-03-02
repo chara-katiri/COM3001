@@ -36,7 +36,7 @@
 
         <div class="itemsList"></div>
 
-        
+
         <!--        Functionality to allow the user navigate back to Home page-->
         <p><a class="btn btn-primary btn-lg back-to-home" href="/Pinboard/index">Back to home</a></p>
     </body>
