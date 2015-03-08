@@ -8,6 +8,7 @@ import java.security.Principal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -25,6 +26,7 @@ public class Items {
 
     @Autowired
     private DatabaseConnection dbConnection;
+    private Object r;
 
     /*
      *Request Mapping to the database and retrive all the items currently stored in it. 
@@ -103,21 +105,36 @@ public class Items {
      *Parameter 'sqlQuery' defines the items that need to be returned. 
      *Parameter 'params' defines the parameters for the SQL query.
      */
-    private List<IItem> constructItemsList(String sqlQuery, Object... params) {
-        List<IItem> items = new ArrayList<>();
+    private List<IItem> constructItemsList(String sqlQuery, Object... params) throws SQLException {
+        List<IItem> items = new ArrayList<>(); // create the array list
         List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID", "Title", "Description", "Price", "Category"), params);
 
-        while (r.next()) {//the loop will return the list of items to the user
-            Map<String, Object> res = new HashMap<>();// create a HashMap
-            ArrayList arrayList = mapList.get(key); //get the value from the HashMap againt the input key
+       /* for (Map<String, Object> r : res) {//the loop will return the list of items to the user
+            Object arrayList = res.get(r); //get the value from the HashMap againt the input key
             arrayList.add(items);//add the items in the list
-            mapList.put(key, arraylist); //put the arrayList against the key value 
+            res.put((String) r, res); //put the arrayList against the key value 
 
             /*List<String> items = new List<String>();
              items = res.values(); // by using 'values()'  the  method will return a list that containes all the values listed in the map. https://www.salesforce.com/us/developer/docs/apexcode/Content/apex_methods_system_map.html
              items.addItems (itemsID, title, decription, price, category);
-             }*/
+             }----
+            
+        
+             HashMap<String,ArrayList<Items>> = new HashMap <String, ArrayList<Item>>();
+             public void addtoList(String r, items res){
+             List<item> itemsList=items.get(r);
+            
+             if(itemsList==null)//if list doesn't exit create it
+             itemsList=new ArrayList<items>();
+             itemsList.add(res);
+             items.put(r, itemsList);
+             }else{
+             if (!itemsList.contains(res)) itemsList.add(res);
+             }
+             }----
+            
         }
         return items;
 
-    }
+    }*/
+}
