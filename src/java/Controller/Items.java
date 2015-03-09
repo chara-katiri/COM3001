@@ -5,6 +5,7 @@ import ItemsModel.BookItem;
 import ItemsModel.IItem;
 import UtilsService.DatabaseConnection;
 import java.security.Principal;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -94,9 +95,7 @@ public class Items {
     public String removeItem(int itemId) {
 
         String removeFavourite = "DELETE FROM items WHERE ItemsID=?";
-
         dbConnection.updateDB(removeFavourite, itemId);
-
         return "admin";
     }
 
@@ -105,36 +104,62 @@ public class Items {
      *Parameter 'sqlQuery' defines the items that need to be returned. 
      *Parameter 'params' defines the parameters for the SQL query.
      */
-    private List<IItem> constructItemsList(String sqlQuery, Object... params) throws SQLException {
+    
+    public List<IItem> constructItemsList (String sqlQuery, Object...params){
+        List <IItem> items = new ArrayList<>(); // creation of empty array list for the items
+        
+        try {
+            List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID","Title", "Description", "Price", "Category"), params);
+            
+            for (Map<String, Object> r:res){
+                int id = (int) r.get("itemsID");
+                String title = (String) r.get ("Title");
+                
+            };
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, "Error executing SQL query", ex);
+        }
+        return items;
+    }
+    
+    /*private List<IItem> constructItemsList(String sqlQuery, Object... params) throws SQLException {
         List<IItem> items = new ArrayList<>(); // create the array list
         List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID", "Title", "Description", "Price", "Category"), params);
 
-       /* for (Map<String, Object> r : res) {//the loop will return the list of items to the user
+        for (Map<String, Object> r : res) {//the loop will return the list of items to the user
             Object arrayList = res.get(r); //get the value from the HashMap againt the input key
             arrayList.add(items);//add the items in the list
             res.put((String) r, res); //put the arrayList against the key value 
 
-            /*List<String> items = new List<String>();
-             items = res.values(); // by using 'values()'  the  method will return a list that containes all the values listed in the map. https://www.salesforce.com/us/developer/docs/apexcode/Content/apex_methods_system_map.html
-             items.addItems (itemsID, title, decription, price, category);
-             }----
-            
-        
-             HashMap<String,ArrayList<Items>> = new HashMap <String, ArrayList<Item>>();
-             public void addtoList(String r, items res){
-             List<item> itemsList=items.get(r);
-            
-             if(itemsList==null)//if list doesn't exit create it
-             itemsList=new ArrayList<items>();
-             itemsList.add(res);
-             items.put(r, itemsList);
-             }else{
-             if (!itemsList.contains(res)) itemsList.add(res);
-             }
-             }----
-            
+            List<String> items = new List<String>();
+            items = res.values(); // by using 'values()'  the  method will return a list that containes all the values listed in the map. https://www.salesforce.com/us/developer/docs/apexcode/Content/apex_methods_system_map.html
+            items.addItems(itemsID, title, decription, price, category);
         }
+        HashMap<String, ArrayList<Items>> = new HashMap<String, ArrayList<Item>>
+    
+
+    ();
+             public void addtoList(String r, items res) {
+        List<item> itemsList = items.get(r);
+
+        if (itemsList == null)//if list doesn't exit create it
+        {
+            itemsList = new ArrayList<items>();
+        }
+        itemsList.add(res);
+        items.put(r, itemsList);
+    }
+
+    
+        else{
+             if (!itemsList.contains(res)) {
+            itemsList.add(res);
+        }
+    }
+}
+
+}
         return items;
 
-    }*/
+}*/
 }
