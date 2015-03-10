@@ -23,6 +23,7 @@ public class ApplicationConfig {
         DriverManagerDataSource source = new DriverManagerDataSource();
         ConfigurationFileProperties config = ConfigurationFileProperties.getInstance();
 
+        source.setDriverClassName(config.getPropertyValue("dbDriver"));
         source.setUrl(config.getPropertyValue("dbUrl") + config.getPropertyValue("dbName"));
         source.setUsername(config.getPropertyValue("dbUserName"));
         source.setPassword(config.getPropertyValue("dbPassword"));

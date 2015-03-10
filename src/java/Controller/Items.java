@@ -114,52 +114,15 @@ public class Items {
             for (Map<String, Object> r:res){
                 int id = (int) r.get("itemsID");
                 String title = (String) r.get ("Title");
+                String description = (String) r.get ("Description");
+                double price = (double) r.get("Price");
+                String category = (String) r.get ("Category");
                 
+                items.add(id, null);
             };
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, "Error executing SQL query", ex);
         }
         return items;
     }
-    
-    /*private List<IItem> constructItemsList(String sqlQuery, Object... params) throws SQLException {
-        List<IItem> items = new ArrayList<>(); // create the array list
-        List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID", "Title", "Description", "Price", "Category"), params);
-
-        for (Map<String, Object> r : res) {//the loop will return the list of items to the user
-            Object arrayList = res.get(r); //get the value from the HashMap againt the input key
-            arrayList.add(items);//add the items in the list
-            res.put((String) r, res); //put the arrayList against the key value 
-
-            List<String> items = new List<String>();
-            items = res.values(); // by using 'values()'  the  method will return a list that containes all the values listed in the map. https://www.salesforce.com/us/developer/docs/apexcode/Content/apex_methods_system_map.html
-            items.addItems(itemsID, title, decription, price, category);
-        }
-        HashMap<String, ArrayList<Items>> = new HashMap<String, ArrayList<Item>>
-    
-
-    ();
-             public void addtoList(String r, items res) {
-        List<item> itemsList = items.get(r);
-
-        if (itemsList == null)//if list doesn't exit create it
-        {
-            itemsList = new ArrayList<items>();
-        }
-        itemsList.add(res);
-        items.put(r, itemsList);
-    }
-
-    
-        else{
-             if (!itemsList.contains(res)) {
-            itemsList.add(res);
-        }
-    }
-}
-
-}
-        return items;
-
-}*/
 }
