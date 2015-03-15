@@ -82,8 +82,23 @@
                                         <form class="navbar-form" name='loginForm' action="${loginUrl}" method='POST'>
                                             <input class="form-control" type='text' name='username' placeholder="Username" />
                                             <input class="form-control" type='password' name='password' placeholder="Password" />
+                                            <form id="login" class="form-horizontal" action="" method="post" name="userForm">
+                                                <fieldset>
+                                                    <legend> Enter your email. You will shortly receive an email that contains a temporary password. </legend>
+                                                    <div class="form-group centered">
+                                                        <spring:bind path="user.user_email">
+                                                            <input type="email" name="${status.expression}" value="${status.value}" placeholder="Email" class="form-control text required" id="user_email">
+                                                        </spring:bind>
+                                                    </div>
+                                                    <div class="form-group centered">
+                                                        <button id="loginSubmit" type="submit" class="btn btn-lg btn-success" onclick="addIcon()"><i id="submitIcon" class="fa fa-refresh fa-2x fa-spin hidden"></i> Continue</button>
+                                                    </div>
+                                            </form>    </body>
+
                                             <input class="btn btn-default" name="submit" type="submit" value="Login" />
                                             <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                            <li><a href="${pageContext.request.contextPath}/find"><span class="glyphicon glyphicon-eye-open"></span> Search </a></li>
+
                                         </form>
                                     </ul>
                                 </li>
