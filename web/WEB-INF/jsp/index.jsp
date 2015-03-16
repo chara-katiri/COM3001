@@ -79,12 +79,15 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <c:url value='/login' var="loginUrl" />
+
                                         <form class="navbar-form" name='loginForm' action="${loginUrl}" method='POST'>
                                             <input class="form-control" type='text' name='username' placeholder="Username" />
                                             <input class="form-control" type='password' name='password' placeholder="Password" />
+
+                                            <!-- Functionality to allow users request a temporary password if they forget their password.-->
                                             <form id="login" class="form-horizontal" action="" method="post" name="userForm">
                                                 <fieldset>
-                                                    <legend> Enter your email. You will shortly receive an email that contains a temporary password. </legend>
+                                                    <legend> Please provide your email. You will shortly receive an email that contains a temporary password. </legend>
                                                     <div class="form-group centered">
                                                         <spring:bind path="user.user_email">
                                                             <input type="email" name="${status.expression}" value="${status.value}" placeholder="Email" class="form-control text required" id="user_email">
@@ -93,12 +96,15 @@
                                                     <div class="form-group centered">
                                                         <button id="loginSubmit" type="submit" class="btn btn-lg btn-success" onclick="addIcon()"><i id="submitIcon" class="fa fa-refresh fa-2x fa-spin hidden"></i> Continue</button>
                                                     </div>
-                                            </form>    </body>
+                                            </form>
+                                            <!--End of reset password functionality--> 
 
                                             <input class="btn btn-default" name="submit" type="submit" value="Login" />
                                             <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                            <li><a href="${pageContext.request.contextPath}/find"><span class="glyphicon glyphicon-eye-open"></span> Search </a></li>
 
+                                            <!--Functionality that allows the users to search items--> 
+                                            <input class="glyphicon glyphicon-eye-open" name="search" type=" "
+                                                   <li><a href="${pageContext.request.contextPath}/search"><span class="glyphicon glyphicon-eye-open"></span> Search </a></li>
                                         </form>
                                     </ul>
                                 </li>
@@ -130,6 +136,28 @@
                                     </ul>
                                 </li>
 
+                                <!--Functionality that allows users to search. The method goes through a list of items and categories to find the relevant item-->
+                                <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+                                    <form:form  class="form-horizontal form-sidebar"  method="POST" commandName="category" action="${pageContext.request.contextPath}/search" onsubmit="itemsList()">
+                                        <!-- <fieldset> -->
+                                        <legend>Search</legend>
+
+                                        <div class="form-group">
+                                            <label for="selectCategory" class="control-label">Category</label>
+                                            <div class="">
+                                                <form:select class="form-control" id="selectingCategory" path="category_id">
+                                                    <form:option value="0" label="Select Category"/>
+                                                    <form:options items="${categories}" itemValue="category_id" itemLabel="category_name"/>
+                                                </form:select>
+                                            </div>
+                                        </div>
+                                        <!--End of functionality that allows the users to search-->
+                                                
+                                        <!--</fieldset> -->
+                                        <button type="submit" class="btn btn-primary btn-xs" style="display: block;">Search</button>
+                                    </form:form>
+                                </div>
+                                                
                             </c:otherwise>
                         </c:choose>
 
