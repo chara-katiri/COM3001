@@ -19,7 +19,6 @@ public class Home {
         /*
          *return statement returns the name of the home page file     
          */
-
         return "index";
     }
 
@@ -30,5 +29,5 @@ public class Home {
     public String accessDeniedPage() {
         return "errorPage";
     }
-
+ 
 }
