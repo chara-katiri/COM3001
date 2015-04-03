@@ -196,4 +196,5 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script src="${resourcesUrl}/js/register.js"></script>
     </body>
+
 </html>
