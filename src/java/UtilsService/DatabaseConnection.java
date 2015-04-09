@@ -124,7 +124,7 @@ public class DatabaseConnection {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, "Error manipulating ResultSet", ex);
+            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, "Error while manipulating the ResultSet", ex);
         } finally {
             if (ps != null) {
                 ps.close();
@@ -148,7 +148,7 @@ public class DatabaseConnection {
          
         // the method throws SQLException
         } catch (SQLException ex) {
-            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, "Error executing sql query statement", ex);
+            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, "Error while executing sql query statement", ex);
         }
 
         return res;

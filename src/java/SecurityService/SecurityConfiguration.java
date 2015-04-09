@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     /**
      * Configuration for app pages authorisation.   
-     * The Favourites page is available to all users. The default page to login and logout is the home page (index)  
+     * The Favourites page is available only to those with role=users. The default page to login and logout is the home page (index)  
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {

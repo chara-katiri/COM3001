@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Favourites</title>
+        <title>Pinboard Favourites</title>
 
         <c:url value='/resources' var="resourcesUrl" />
         <!-- External CSS Files-->
@@ -15,15 +15,13 @@
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/favourites.css" />
 
-        <!--External JavaScript Files-->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- JQuery -->
-
         <!--Internal JavaScript Files-->
         <script src="${resourcesUrl}/js/utils.js"></script>
         <script src="${resourcesUrl}/js/components/itemsList.js"></script>
         <script src="${resourcesUrl}/js/favourites.js"></script>
 
     </head>
+    
     <body>
         <div id="pageContextPath" data-page-context="${pageContext.request.contextPath}"></div>
         <div class="authorizeUser">

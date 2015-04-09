@@ -16,7 +16,7 @@
     <body>
         <div class="jumbotron">
             <h1>Access Denied</h1>
-            <p><a class="btn btn-primary btn-lg back-to-home" href="/Pinboard/index">Back to home</a></p>
+            <p><a class="btn btn-primary btn-lg back-to-home" href="/Pinboard/index">Navigate to homepage</a></p>
         </div>
     </body>
 </html>

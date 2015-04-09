@@ -1,5 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!--Note for CK: the 3 lines of code shown below might not be required.-->
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +22,7 @@
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
 
 
-        <!--External JavaScript Files-->
+        <!--External JavaScript Files. This is used for validation of content submitted by users-->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
 
         <!--Internal JavaScript Files-->
@@ -53,20 +59,20 @@
             </ul>
 
             <!-- Bootstrap Tabs via Data Attributes.
-                 Ref: [1] a. Mark Otto, 'JavaScript · Bootstrap', Getbootstrap.com, 2015. [Online]. Available: http://getbootstrap.com/javascript/. [Accessed: 04- Feb- 2015].
+                 Source: a. Mark Otto, 'JavaScript · Bootstrap', Getbootstrap.com, 2015. [Online]. Available: http://getbootstrap.com/javascript/. [Accessed: 04- Feb- 2015].
                  tab-content represents the parent element
             -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="home">
                     <div class="jumbotron">
-                        <h1>Welcome <c:out value="${pageContext.request.userPrincipal.name}" /></h1>
-                        <p><a class="btn btn-primary btn-lg" href="/Pinboard/index">Back to home</a></p>
+                        <h1>Welcome to Pinboard <c:out value="${pageContext.request.userPrincipal.name}" /></h1>
+                        <p><a class="btn btn-primary btn-lg" href="/Pinboard/index">Back to Pinboard homepage</a></p>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="add">
                     <c:url value='/pinboard/manage/add' var="addUrl"></c:url>
                     <form class="form" id="registrationForm" action="${addUrl}" method="POST">
-                        <h2 class="form-heading">Add New Item</h2>
+                        <h2 class="form-heading">Pin New Item on Pinboard</h2>
 
                         <input class="form-control" type="text" name="title" placeholder="Item Title" />
                         <input class="form-control" type="text" name="description" placeholder="Description" />

@@ -11,9 +11,9 @@ var ItemsList = (function () {
 
     addItem = function (item, addDelete) {
         var itemList = document.querySelector(".itemsList"),
-                $itemsList = $(itemsList);
+                $itemList = $(itemList);
 
-        if (itemsList && $itemsList) {
+        if (itemList && $itemList) {
             itemList.appendChild(_createItemDiv(item, addDelete));
         }
     };
@@ -70,14 +70,14 @@ var ItemsList = (function () {
 
         $.ajax({
             type: 'Get',
-            url: Utils.getPageContext() + '/isFavourite? item=' + itemId,
+            url: Utils.getPageContext() + '/isFavourite?item=' + itemId,
             success: function (isFavourite) {
                 var authorizedToggle = document.querySelector('.authorizeUser .toggleFavourite'),
                         toggleFav;
 
                 if (Utils.isValidVariable(authorizedToggle)) {
 
-                    toggleFav = authorizedToggle.cloneNode(true); //deep clone
+                    toggleFav = authorizedToggle.cloneNode(true); //here's a deep clone
 
                     toggleFav.innerHTML = isFavourite ? removeFromFavourites : addToFavourites;
                     toggleFav.classList.add("btn");
@@ -96,7 +96,7 @@ var ItemsList = (function () {
                         else {
                             $.ajax({
                                 type: 'Get',
-                                url: Utils.getPageContext() + '/removeFromFavourites? item=' + itemId,
+                                url: Utils.getPageContext() + '/removeFromFavourites?item=' + itemId,
                                 success: function () {
                                     if (document.URL.indexOf("favourites") !== -1) {
                                         var items = document.querySelectorAll(".item");

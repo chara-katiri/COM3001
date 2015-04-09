@@ -27,14 +27,15 @@ public class Items {
 
     @Autowired
     private DatabaseConnection dbConnection;
-    private Object r;
+    //private Object r;
 
     /*
      *Request Mapping to the database and retrive all the items currently stored in it. 
      */
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List<IItem> getItems() throws SQLException {
+    public List<IItem> getItems() {
+//    public List<IItem> getItems() throws SQLException {
         String queryItems = "SELECT * FROM items;";
         return constructItemsList(queryItems);
     }
@@ -48,7 +49,8 @@ public class Items {
     /*
      *Get the user details autowired using Principal principal. Collect the details of the user currently logged in. 
      */
-    public List<IItem> getItemsFavourites(Principal principal) throws SQLException {
+//  public List<IItem> getItemsFavourites(Principal principal) throws SQLException {
+    public List<IItem> getItemsFavourites(Principal principal) {
         String queryFavourites = "SELECT i.ItemsID, i.Title, i.Description, i.Price, i.Category "
                 + "FROM items i "
                 + "INNER JOIN user_favourites uf "
@@ -90,7 +92,6 @@ public class Items {
     }
 
     @Secured("ROLE_ADMIN")    //Process to allow admins remove items from the database. Parameter 'item' is the item to be removed.  
-
     @RequestMapping(value = "/manage/remove", method = RequestMethod.POST)
     public String removeItem(int itemId) {
 
@@ -104,24 +105,25 @@ public class Items {
      *Parameter 'sqlQuery' defines the items that need to be returned. 
      *Parameter 'params' defines the parameters for the SQL query.
      */
-    
-    public List<IItem> constructItemsList (String sqlQuery, Object...params){
-        List <IItem> items = new ArrayList<>(); // creation of empty array list for the items
-        
+    public List<IItem> constructItemsList(String sqlQuery, Object... params) {
+        List<IItem> items = new ArrayList<>(); // creation of empty array list for the items
+
         try {
-            List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID","Title", "Description", "Price", "Category"), params);
-            
-            for (Map<String, Object> r:res){
+            List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID", "Title", "Description", "Price", "Category"), params);
+
+            for (Map<String, Object> r : res) {
                 int id = (int) r.get("itemsID");
-                String title = (String) r.get ("Title");
-                String description = (String) r.get ("Description");
+                String title = (String) r.get("Title");
+                String description = (String) r.get("Description");
                 double price = (double) r.get("Price");
-                String category = (String) r.get ("Category");
-                
+                String category = (String) r.get("Category");
                 items.add(id, null);
             };
+
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, "Error executing SQL query", ex);
+        } catch (NullPointerException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, "NullPointer from DB connection still not properly initialised", ex);
         }
         return items;
     }

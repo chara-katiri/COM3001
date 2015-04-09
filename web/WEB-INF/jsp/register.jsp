@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register</title>
+        <title>Pinboard Register</title>
 
         <c:url value='/resources' var="resourcesUrl" />
         <!-- External CSS Files-->

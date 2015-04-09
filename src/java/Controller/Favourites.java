@@ -110,10 +110,12 @@ public class Favourites {
         if (principal != null) {
             String addFavourite = "SELECT Username, Favourite FROM user_favourites WHERE Username = ? AND Favourite = ?";
             String username = principal.getName();
-
-            List<Map<String, Object>> res;
-            try {
-                res = dbConnection.queryDB(addFavourite, Arrays.asList("Username", "Favourite"), username, itemId);
+            
+        try {
+            List<Map<String, Object>> res= dbConnection.queryDB(addFavourite, Arrays.asList("Username", "Favourite"), username, itemId);
+            if (res.size() >0){
+                return true;
+            }
             } catch (SQLException ex) {
                 Logger.getLogger(Favourites.class.getName()).log(Level.SEVERE, null, ex);
             }

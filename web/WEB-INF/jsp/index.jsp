@@ -11,7 +11,9 @@
         <c:url value='/resources' var="resourcesUrl" />
         <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
-
+<!--        Note for CK: the line of code below might not be required-->
+        <link href="http://getbootstrap.com/examples/carousel/carousel.css" rel="stylesheet"> <!-- Bootstrap Carousel -->
+        
         <!--Internal CSS Files-->
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/default.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
@@ -23,6 +25,7 @@
         <!--Internal JavaScript Files-->
         <script src="${resourcesUrl}/js/utils.js"></script>
         <script src="${resourcesUrl}/js/share.js"></script>
+        <script src="${resourcesUrl}/js/itemsList.js"></script>
         <script src="${resourcesUrl}/js/default.js"></script>
     </head>
 
@@ -41,15 +44,16 @@
         </script>
 
 
-        <!-- Nav Bar 
-        ================================================== -->
+        <!-- Nav Bar beginning -->
 
         <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
-
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">Pinboard</a>
                 </div><!-- /.navbar-header -->
@@ -66,9 +70,9 @@
                                 <!--only users with admin rights are able to delete items that were not create by them. 
                                 This is for maintenance purposes. -->
                                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                    <c:url value='/items/manage' var="manageItemsUrl" />
+                                    <c:url value='/Items/manage' var="manageItemsUrl" />
                                     <li>
-                                        <a href="${manageItemsUrl}">Manage Items</a>
+                                        <a href="${manageItemsUrl}">Manage Pinboard Items</a>
                                     </li>
                                 </sec:authorize>
                             </c:when>
@@ -177,8 +181,7 @@
             </div><!-- /.container -->
         </nav><!-- /.navbar -->
 
-        <!-- /.Nav Bar
-        ================================================== -->
+        <!-- /.Nav Bar ends -->
 
         <div class="row featurette share">
             <div class="col-md-4">
