@@ -11,6 +11,14 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
+                    <file>${libs.MySQLDriver.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${libs.jstl.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
                     <file>${file.reference.spring-security-config-3.2.5.RELEASE.jar-2}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
@@ -27,23 +35,7 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${libs.jstl.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${libs.MySQLDriver.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.cors-filter-1.5.1.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.log4j-1.2.17.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.spring-webmvc-3.0.5.RELEASE.jar}</file>
+                    <file>${file.reference.spring-webmvc-4.0.1.RELEASE.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
@@ -59,7 +51,6 @@
             <config-files>
                 <config-file>web/WEB-INF/applicationContext.xml</config-file>
                 <config-file>web/WEB-INF/dispatcher-servlet.xml</config-file>
-                <config-file>web/WEB-INF/libraries/security.xml</config-file>
             </config-files>
             <config-file-groups>
                 <config-file-group name="Default Group">

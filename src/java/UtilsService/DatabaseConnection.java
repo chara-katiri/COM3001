@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 /**
  * Connection to the database using Singleton implementation
  */
+@Service
 public class DatabaseConnection {
 
     private static class DBConnectionHolder {

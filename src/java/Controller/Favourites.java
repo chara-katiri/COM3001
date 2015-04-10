@@ -27,7 +27,7 @@ public class Favourites {
     /*
      * Request mapping to favourites page and return the favourites name
      */
-    @RequestMapping(value = "/favourites", method = RequestMethod.GET)
+    @RequestMapping(value = "/Favourites", method = RequestMethod.GET)
     public String favourites() {
         return "favourites";
     }
@@ -48,7 +48,7 @@ public class Favourites {
          *The principal is valid if the user is logged in 
          */
         if (principal != null) {
-            String addFavourite = "INSERT INTO user_favourites (Username, Favourite) VALUES (?, ?);";
+            String addFavourite = "INSERT INTO user_favourites (username, favourite) VALUES (?, ?);";
             String username = principal.getName();
 
             dbConnection.updateDB(addFavourite, username, itemId);
@@ -78,7 +78,7 @@ public class Favourites {
          *If the user is logged in then principal is valid
          */
         if (principal != null) {
-            String addFavourite = "DELETE FROM user_favourites WHERE Username=? AND Favourite=?;";
+            String addFavourite = "DELETE FROM user_favourites WHERE username=? AND favourite=?;";
             String username = principal.getName();
 
             dbConnection.updateDB(addFavourite, username, itemId);
@@ -108,11 +108,11 @@ public class Favourites {
          *If the user is logged in then principal is valid
          */
         if (principal != null) {
-            String addFavourite = "SELECT Username, Favourite FROM user_favourites WHERE Username = ? AND Favourite = ?";
+            String addFavourite = "SELECT username, favourite FROM user_favourites WHERE username = ? AND favourite = ?";
             String username = principal.getName();
             
         try {
-            List<Map<String, Object>> res= dbConnection.queryDB(addFavourite, Arrays.asList("Username", "Favourite"), username, itemId);
+            List<Map<String, Object>> res= dbConnection.queryDB(addFavourite, Arrays.asList("username", "favourite"), username, itemId);
             if (res.size() >0){
                 return true;
             }
