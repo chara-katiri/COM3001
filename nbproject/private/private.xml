@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/SecurityService/SecurityConfiguration.java</file>
             <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/Controller/Favourites.java</file>
+            <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/Controller/Login.java</file>
+            <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/Controller/Items.java</file>
+            <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/SecurityService/ApplicationConfig.java</file>
+            <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/UtilsService/DatabaseConnection.java</file>
             <file>file:/Users/CharaKatiri/Documents/Pinboard/web/WEB-INF/dispatcher-servlet.xml</file>
-            <file>file:/Users/CharaKatiri/Documents/Pinboard/web/WEB-INF/web.xml</file>
         </group>
     </open-files>
 </project-private>

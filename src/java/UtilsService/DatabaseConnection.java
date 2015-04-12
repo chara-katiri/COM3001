@@ -9,9 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
 
-/**
- * Connection to the database using Singleton implementation
- */
 @Service
 public class DatabaseConnection {
 

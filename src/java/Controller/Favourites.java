@@ -27,7 +27,7 @@ public class Favourites {
     /*
      * Request mapping to favourites page and return the favourites name
      */
-    @RequestMapping(value = "/Favourites", method = RequestMethod.GET)
+    @RequestMapping(value = "/favourites", method = RequestMethod.GET)
     public String favourites() {
         return "favourites";
     }

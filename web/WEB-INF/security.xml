@@ -7,7 +7,6 @@
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-
     <!-- This ensures that every page in the application is secured and authorised 
         by restricting access only to users with role=USER
         Source: Docs.spring.io, '2. Security Namespace Configuration', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.0.x/reference/ns-config.html#ns-getting-started. [Accessed: 06- Apr- 2015].
