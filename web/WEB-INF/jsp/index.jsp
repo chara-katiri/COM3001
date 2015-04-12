@@ -123,8 +123,8 @@
                                         <form class="navbar-form" name="registrationForm" action="${registerUrl}" method="POST">
                                             <input class="form-control" type="text" name="username" placeholder="Your university username"
                                                    data-validation="length alphanumeric" 
-                                                   data-validation-length="4-12"
-                                                   data-validation-error-msg="The username must be at least 4 characters long. Format: 'aa00001' " />
+                                                   data-validation-length="7"
+                                                   data-validation-error-msg="The username must exactly 7 characters long. Format: 'aa00001' " />
                                             <input class="form-control" type="password" name="pass_confirmation" placeholder="Password (Min 8 Characters)"
                                                    data-validation="length"
                                                    data-validation-length="min8"
