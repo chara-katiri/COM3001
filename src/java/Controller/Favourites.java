@@ -9,16 +9,24 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+
+@Controller
+/**@RequestMapping ("favourites")
+@Configuration 
+@ComponentScan ("UtilsService") **/
+
 /* 
  * Controller for favourites
  */
-@Controller
 public class Favourites {
 
     @Autowired
