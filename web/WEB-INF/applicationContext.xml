@@ -11,26 +11,32 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--bean id="propertyConfigurer"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="/WEB-INF/jdbc.properties" />
-
-<bean id="dataSource"
+  
+<!--<bean id="DatabaseConnection"
     class="org.springframework.jdbc.datasource.DriverManagerDataSource"
     p:driverClassName="${jdbc.driverClassName}"
     p:url="${jdbc.url}"
     p:username="${jdbc.username}"
-    p:password="${jdbc.password}" /-->
+    p:password="${jdbc.password}" />-->
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
 
 <!--    <bean id="dbConnection" class="UtilsService.DatabaseConnection" />
     <bean id="UtilsService.DatabaseConnection" class="Controller.Favourites.dbConnection"/>-->
-
+    <context:annotation-config></context:annotation-config>
+    
     <context:component-scan base-package="Pinboard"/>
     <context:component-scan base-package="ItemsModel"/>
     <context:component-scan base-package="UseModel"/>
-    <context:component-scan base-package="SecurityService"/>
+<!--    <context:component-scan base-package="SecurityService"/>-->
     <context:component-scan base-package="UtilsService"/>
+    <context:component-scan base-package="DatabaseConnection"/>
     
+    <bean id= "DatabaseConnection" class="" destroy-method="close">
+        <property name= "dbDriver" value="com.mysql.jdbc.Driver"/>
+        <property name= "dbUrl" value="127.0.0.1.10000"/>
+        <property name= "dbName=" value="ck00113"/>
+        <property name= "dbUserName=" value="ck00113"/>
+        <property name= "dbPassword" value="ck00113"/>
+    </bean> 
 </beans>

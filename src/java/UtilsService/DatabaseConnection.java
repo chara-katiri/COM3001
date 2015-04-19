@@ -7,18 +7,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 
-@Service
+@Service // used for web service type of DB connections. It indicates a Service component in the business layer. 
 public class DatabaseConnection {
 
+ 
     private static class DBConnectionHolder {
-
-        private static final DatabaseConnection INSTANCE = new DatabaseConnection();
+        private static final DatabaseConnection INSTANCE = new DatabaseConnection(); //declaration databaseConnection: the state of the DatabaseConnection will remain the same, thus "static,final"
     }
 
+
     private Connection conn;
+
 
     private DatabaseConnection() {
         initConnectionToDb();

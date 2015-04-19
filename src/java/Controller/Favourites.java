@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
-@Controller
+
 /**@RequestMapping ("favourites")
 @Configuration 
 @ComponentScan ("UtilsService") **/
@@ -27,8 +27,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /* 
  * Controller for favourites
  */
+@Controller
 public class Favourites {
 
+    
     @Autowired
     DatabaseConnection dbConnection;
 

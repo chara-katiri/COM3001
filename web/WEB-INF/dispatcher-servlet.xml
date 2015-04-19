@@ -50,5 +50,6 @@
     <bean id="Home" class="Controller.Home" p:datasource-ref="dataSource" />
     <bean id="Items" class="Controller.Items" p:datasource-ref="dataSource" />
     <bean id="Login" class="Controller.Login" p:datasource-ref="dataSource" />-->
+<!--    <bean id="DatabaseConnection" class="UtilsService"/> -->
     
 </beans>
