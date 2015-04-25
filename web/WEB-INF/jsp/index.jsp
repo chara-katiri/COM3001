@@ -11,9 +11,9 @@
         <c:url value='/resources' var="resourcesUrl" />
         <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
-<!--        Note for CK: the line of code below might not be required-->
+        <!--        Note for CK: the line of code below might not be required-->
         <link href="http://getbootstrap.com/examples/carousel/carousel.css" rel="stylesheet"> <!-- Bootstrap Carousel -->
-        
+
         <!--Internal CSS Files-->
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/default.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
@@ -58,7 +58,16 @@
                     <a class="navbar-brand" href="#">Pinboard</a>
                 </div><!-- /.navbar-header -->
 
+
+<!--test-->
                 <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/favourites">Favourites 2</a></li>
+                        <li><a href="/login">Login 2 </a></li>
+                        <li><a href="/register">Register 2</a></li>
+                    </ul>
+
+
                     <ul class="nav navbar-nav">
                         <c:url value='/favourites' var="favouritesUrl" />
                         <li><a href="${favouritesUrl}">Favourites</a></li>
@@ -84,8 +93,8 @@
                                     <ul class="dropdown-menu">
                                         <c:url value='/login' var="loginUrl" />
                                         <li><a href="${loginUrl}">Login</a></li>
-                        
-                        
+
+
                                         <form class="navbar-form" name='loginForm' action="${loginUrl}" method='POST'>
                                             <input class="form-control" type='text' name='username' placeholder="Username" />
                                             <input class="form-control" type='password' name='password' placeholder="Password" />
@@ -158,12 +167,12 @@
                                             </div>
                                         </div>
                                         <!--End of functionality that allows the users to search-->
-                                                
+
                                         <!--</fieldset> -->
                                         <button type="submit" class="btn btn-primary btn-xs" style="display: block;">Search</button>
                                     </form:form>
                                 </div>
-                                                
+
                             </c:otherwise>
                         </c:choose>
 
