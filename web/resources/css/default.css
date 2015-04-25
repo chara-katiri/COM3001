@@ -17,3 +17,13 @@
     right: 2em;
     display: none;
 }
+
+.div {
+     opacity: 0;
+     filter:alpha(opacity=0);
+     }
+     
+.div:hover .share {
+     opacity: 1.0;
+     filter:alpha(opacity=100);
+     }

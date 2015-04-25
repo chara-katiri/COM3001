@@ -7,11 +7,11 @@
         <title>Log in</title>
 
         <c:url value='/resources' var="resourcesUrl"></c:url>
-        <!-- External CSS Files-->
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
+            <!-- External CSS Files-->
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
 
-        <!--Internal CSS Files-->
-        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
+            <!--Internal CSS Files-->
+            <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
     </head>
 
     <body>
@@ -30,12 +30,23 @@
                     <div class="logout">${logout}</div>
                 </c:if>
 
-                <input class="form-control" type='text' name='username' placeholder="Username" required autofocus />
-                <input class="form-control last-input" type='password' name='password' placeholder="Password" required />
+                <!--                 input text and validation   -->
+                <input class="form-control" type='text' name='username' placeholder="Username" required autofocus 
+                       data-validation="length alphanumeric" 
+                       data-validation-length="7"
+                       data-validation-error-msg="The username must exactly 7 characters long. Format: 'aa00001' "
+                       />
+
+                <input class="form-control last-input" type='password' name='password' placeholder="Password" required 
+                       data-validation="length"
+                       data-validation-length="min8"
+                       data-validation-error-msg="The password must be at least 8 characters long "
+                       />
                 <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login" />
-                <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> <!-- Protection against CRSF attack. 
-Hackers use Cross-Site Request Forgery attack in order to steal the cookies from the authenticated user. 
-Docs.spring.io, 'Spring Security Reference', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-using. [Accessed: 09- Feb- 2015].-->
+                <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />  
+                <!--    Protection against CRSF attack. Hackers use Cross-Site Request Forgery attack in order to steal the cookies from the authenticated user. 
+                        Docs.spring.io, 'Spring Security Reference', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-using. 
+                        [Accessed: 09- Feb- 2015].-->
 
 
                 <a class="btn btn-primary" href="index">Back to home</a>

@@ -40,8 +40,8 @@
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register" />
             <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-            <a class="btn btn-primary" href="/Pinboard/index">Back to home</a>
-            <a class="btn btn-primary" href="/Pinboard/login">Login</a>
+            <a class="btn btn-primary" href="index">Back to home</a>
+            <a class="btn btn-primary" href="login">Login</a>
         </form>
 
         <script src="${resourcesUrl}/js/register.js"></script>

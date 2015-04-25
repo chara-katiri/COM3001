@@ -14,6 +14,8 @@
         <!-- Internal CSS Files    -->    
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/favourites.css" />
+        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
+        
 
         <!--Internal JavaScript Files-->
         <script src="${resourcesUrl}/js/utils.js"></script>
