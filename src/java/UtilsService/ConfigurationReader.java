@@ -19,6 +19,7 @@ public class ConfigurationReader {
      */
     
       public static Properties loadConfigurationFile(String resourceLocation) {
+        //the line just below might not be needed.
         InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceLocation);
         Properties prop = new Properties();
         

@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pinboard Register</title>
 
-        <c:url value='/resources' var="resourcesUrl" />
+        <c:url value='/resources' var="resourcesUrl"></c:url>
         <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
 

@@ -7,8 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.stereotype.Service;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 
 @Service // used for web service type of DB connections. It indicates a Service component in the business layer. 
 public class DatabaseConnection {
@@ -19,7 +22,7 @@ public class DatabaseConnection {
     }
 
 
-    private Connection conn;
+    private Connection conn = null;
 
 
     private DatabaseConnection() {
@@ -40,17 +43,26 @@ public class DatabaseConnection {
      * them to connect to the database.
      */
     private void initConnectionToDb() {
-        ConfigurationFileProperties config = ConfigurationFileProperties.getInstance();
-        String url = config.getPropertyValue("dbUrl");
-        String dbName = config.getPropertyValue("dbName");
-        String userName = config.getPropertyValue("dbUserName");
-        String password = config.getPropertyValue("dbPassword");
-        String driver=config.getPropertyValue("dbDriver");
+        //ConfigurationFileProperties config = ConfigurationFileProperties.getInstance();
+//        String url = config.getPropertyValue("dbUrl");
+//        String dbName = config.getPropertyValue("dbName");
+//        String userName = config.getPropertyValue("dbUserName");
+//        String password = config.getPropertyValue("dbPassword");
+//        String driver=config.getPropertyValue("dbDriver");
 
+        String url = "jdbc:mysql://127.0.0.1:10000/";
+        String dbName = "ck00113";
+        String userName = "ck00113";
+        String password = "ck00113";
+       // String driver="com.mysql.jdbc.Driver";
+        
         try {
-            Class.forName(driver).newInstance();
-            conn = DriverManager.getConnection(url + dbName, userName, password);
-        } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
+            //Class.forName(driver).newInstance();
+           conn = DriverManager.getConnection(url + dbName + userName +  password );
+           //conn = DriverManager.getConnection(jdbc:mysql://127.0.0.1:10000/ck00113, ck00113, ck00113));
+
+        } catch (SQLException ex) {
+        //} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, "Error connecting to database", ex);
         }
     }
@@ -144,7 +156,6 @@ public class DatabaseConnection {
 
             if (ps != null) {
                 res = ps.executeQuery();
-
             }
          
         // the method throws SQLException

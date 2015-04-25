@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Log in</title>
 
-        <c:url value='/resources' var="resourcesUrl" />
+        <c:url value='/resources' var="resourcesUrl"></c:url>
         <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
 
@@ -38,8 +38,8 @@ Hackers use Cross-Site Request Forgery attack in order to steal the cookies from
 Docs.spring.io, 'Spring Security Reference', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-using. [Accessed: 09- Feb- 2015].-->
 
 
-                <a class="btn btn-primary" href="/Pinboard/index">Back to home</a>
-                <a class="btn btn-primary" href="/Pinboard/register">Register</a>
+                <a class="btn btn-primary" href="index">Back to home</a>
+                <a class="btn btn-primary" href="register">Register</a>
             </form>
         </div> <!-- end of login and logout container -->
     </body>

@@ -83,7 +83,9 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <c:url value='/login' var="loginUrl" />
-
+                                        <li><a href="${loginUrl}">Login</a></li>
+                        
+                        
                                         <form class="navbar-form" name='loginForm' action="${loginUrl}" method='POST'>
                                             <input class="form-control" type='text' name='username' placeholder="Username" />
                                             <input class="form-control" type='password' name='password' placeholder="Password" />

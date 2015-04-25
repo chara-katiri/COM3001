@@ -8,10 +8,10 @@
         <title>Pinboard Favourites</title>
 
         <c:url value='/resources' var="resourcesUrl" />
-        <!-- External CSS Files-->
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
+        <!--  External CSS Files-->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap --> 
 
-        <!--Internal CSS Files-->        
+        <!-- Internal CSS Files    -->    
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/favourites.css" />
 
@@ -36,6 +36,7 @@
 
 
         <!--        Functionality to allow the user navigate back to Home page-->
-        <p><a class="btn btn-primary btn-lg back-to-home" href="/Pinboard/index">Back to home</a></p>
+        <p><a class="btn btn-primary btn-lg back-to-home" href="index">Back to home</a></p>
+       
     </body>
 </html>

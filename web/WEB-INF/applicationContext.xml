@@ -32,11 +32,11 @@
     <context:component-scan base-package="UtilsService"/>
     <context:component-scan base-package="DatabaseConnection"/>
     
-    <bean id= "DatabaseConnection" class="" destroy-method="close">
+<!--    <bean id= "DatabaseConnection" class= "UtilsService.DatabaseConnection" destroy-method="close">
         <property name= "dbDriver" value="com.mysql.jdbc.Driver"/>
-        <property name= "dbUrl" value="127.0.0.1.10000"/>
+        <property name= "dbUrl" value="127.0.0.1:10000/"/>
         <property name= "dbName=" value="ck00113"/>
         <property name= "dbUserName=" value="ck00113"/>
         <property name= "dbPassword" value="ck00113"/>
-    </bean> 
+    </bean> -->
 </beans>

@@ -33,7 +33,8 @@ public class Login {
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-            @RequestParam(value = "logout", required = false) String logout) {
+            
+    @RequestParam(value = "logout", required = false) String logout) {
 
         ModelAndView model = new ModelAndView();
         if (error != null) {
@@ -50,7 +51,6 @@ public class Login {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)     //Request mapping to the register page. 
-
     public String register() {
         return "register";         //The return statement will return the file name of the register page.  
     }

@@ -11,7 +11,7 @@ public class Constants {
     /**
      * Navigation path to resources 
      */
-    public static final String RESOURCES_PATH = "items/resources/";
+    public static final String RESOURCES_PATH = "/resources/";
     
     /**
      * Constant for configuration file  
