@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,7 +35,7 @@
                 <input class="form-control" type='text' name='username' placeholder="Username" required autofocus 
                        data-validation="length alphanumeric" 
                        data-validation-length="7"
-                       data-validation-error-msg="The username must exactly 7 characters long. Format: 'aa00001' "
+                       data-validation-error-msg="The username must 7 characters long. Format: 'aa00123' "
                        />
 
                 <input class="form-control last-input" type='password' name='password' placeholder="Password" required 

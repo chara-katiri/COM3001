@@ -110,6 +110,9 @@ public class DatabaseConnection {
     }
 
     /**
+     * @param sqlQuery
+     * @param props
+     * @param sqlQuery
      * The SQL statements will be executed as PreparedStatements with specific
      * parameters. 
      * Parameter 'sqlToExecute' is used to execute the statement.
@@ -117,9 +120,14 @@ public class DatabaseConnection {
      * statement. 
      * Parameter 'params' is used as the parameters of the statement.
      * The method returns the properties requested in List format along with the values from the database.
+     * @param sqlQuery
+     * @param props
+     * @param params
+     * @return 
+     * @throws java.sql.SQLException
      */
     
-    public List<Map<String, Object>> queryDB(String sqlQuery, List<String> props, Object... params) throws SQLException {
+        public List<Map<String, Object>> queryDB(String sqlQuery, List<String> props, Object... params) throws SQLException {
         PreparedStatement ps = null;
         
         List<Map<String, Object>> returnedProps = new ArrayList<>();

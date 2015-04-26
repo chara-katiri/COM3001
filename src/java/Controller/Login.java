@@ -31,6 +31,7 @@ public class Login {
      *Parameter 'error' is returned if the user attempts to login but the credentials submitted are invalid. 
      *Parameter 'error' is an empty string. 
      */
+   
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
             
