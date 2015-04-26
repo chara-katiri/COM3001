@@ -1,5 +1,8 @@
 .itemsList {
     overflow: hidden;
+    //margin: 200px auto;
+    margin: 100px 100px;
+    padding: 100px 100px;
 }
 
 .itemsList .item {

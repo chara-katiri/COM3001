@@ -19,7 +19,7 @@
 
         <!--Internal CSS Files -->
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
-        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
+        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/itemsList.css" />
 
 
         <!--External JavaScript Files. This is used for validation of content submitted by users-->
@@ -27,7 +27,7 @@
 
         <!--Internal JavaScript Files-->
         <script src="${resourcesUrl}/js/utils.js"></script>
-        <script src="${resourcesUrl}/js/components/itemsList.js"></script>
+        <script src="${resourcesUrl}/js/itemsList.js"></script>
         <script src="${resourcesUrl}/js/admin.js"></script>
 
 

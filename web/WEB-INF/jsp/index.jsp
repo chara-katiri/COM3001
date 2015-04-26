@@ -9,14 +9,8 @@
         <title>Pinboard</title>
 
         <c:url value='/resources' var="resourcesUrl" />
-        <!-- External CSS Files-->
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
-        <!--        Note for CK: the line of code below might not be required-->
-        <link href="http://getbootstrap.com/examples/carousel/carousel.css" rel="stylesheet"> <!-- Bootstrap Carousel -->
-
-        <!--Internal CSS Files-->
-        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/default.css" />
-        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
+       
+        
 
         <!--External JavaScript Files-->
         <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google+ Share -->
@@ -27,6 +21,16 @@
         <script src="${resourcesUrl}/js/share.js"></script>
         <script src="${resourcesUrl}/js/itemsList.js"></script>
         <script src="${resourcesUrl}/js/default.js"></script>
+        
+        <!--Internal CSS Files-->
+        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/default.css" />
+        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/itemsList.css" />
+        
+         <!-- External CSS Files-->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
+        <!--        Note for CK: the line of code below might not be required-->
+<!--        <link href="http://getbootstrap.com/examples/carousel/carousel.css" rel="stylesheet">  Bootstrap Carousel -->
+
     </head>
 
     <body>
@@ -92,11 +96,11 @@
 
         <!-- 2 columns of text for Categories -->
 
-        <div class="row">
+        <div class="itemsList">
    <!-- Books-->         
             <div class="col-lg-2"> 
 
-                <img class="img-circle" src="${resourcesUrl}/images/books.png" alt="Books" width="200" height="200">
+                <img class="img-square" src="${resourcesUrl}/images/books.png" alt="Books" width="160" height="160">
                 <h2>Books</h2>
                 <p>Second hand books available for sale.</p>
                 <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
@@ -104,14 +108,18 @@
             
     <!--  Rooms-->
             <div class="col-lg-2">
-                <img class="img-circle" src="${resourcesUrl}/images/house.png" alt="Rooms" width="200" height="200" href=" ">
+                <img class="img-square" src="${resourcesUrl}/images/house.png" alt="Rooms" width="145" height="145">
+                <br>
+                <br>
+               
+                
                 <h2>Rooms</h2>
                 <p>Requests for accommodation. </p>
                 <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!-- Rooms -->
             
             </div>
-        </div>
+      
 
 
         <div class="share">           

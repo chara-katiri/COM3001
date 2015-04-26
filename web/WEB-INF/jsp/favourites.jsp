@@ -12,14 +12,14 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap --> 
 
         <!-- Internal CSS Files    -->    
-        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/components/itemsList.css" />
+        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/itemsList.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/favourites.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
         
 
         <!--Internal JavaScript Files-->
         <script src="${resourcesUrl}/js/utils.js"></script>
-        <script src="${resourcesUrl}/js/components/itemsList.js"></script>
+        <script src="${resourcesUrl}/js/itemsList.js"></script>
         <script src="${resourcesUrl}/js/favourites.js"></script>
 
     </head>

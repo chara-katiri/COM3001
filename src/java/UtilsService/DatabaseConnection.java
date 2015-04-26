@@ -21,8 +21,8 @@ public class DatabaseConnection {
         private static final DatabaseConnection INSTANCE = new DatabaseConnection(); //declaration databaseConnection: the state of the DatabaseConnection will remain the same, thus "static,final"
     }
 
-
-    private Connection conn = null;
+    
+    private Connection conn;
 
 
     private DatabaseConnection() {
@@ -43,26 +43,27 @@ public class DatabaseConnection {
      * them to connect to the database.
      */
     private void initConnectionToDb() {
-        //ConfigurationFileProperties config = ConfigurationFileProperties.getInstance();
-//        String url = config.getPropertyValue("dbUrl");
-//        String dbName = config.getPropertyValue("dbName");
-//        String userName = config.getPropertyValue("dbUserName");
-//        String password = config.getPropertyValue("dbPassword");
-//        String driver=config.getPropertyValue("dbDriver");
+        ConfigurationFileProperties config = ConfigurationFileProperties.getInstance();
+        String url = config.getPropertyValue("dbUrl");
+        String dbName = config.getPropertyValue("dbName");
+        String userName = config.getPropertyValue("dbUserName");
+        String password = config.getPropertyValue("dbPassword");
+       // String driver = config.getPropertyValue("dbDriver");
 
-        String url = "jdbc:mysql://127.0.0.1:10000/";
-        String dbName = "ck00113";
-        String userName = "ck00113";
-        String password = "ck00113";
-       // String driver="com.mysql.jdbc.Driver";
-        
+//        String url = "jdbc:mysql://127.0.0.1:10000/";
+//        String dbName = "ck00113";
+//        String userName = "ck00113";
+//        String password = "ck00113";
+    String driver="com.mysql.jdbc.Driver";
+
         try {
-            //Class.forName(driver).newInstance();
-           conn = DriverManager.getConnection(url + dbName + userName +  password );
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url + dbName, userName, password);
+            //conn = DriverManager.getConnection(url + dbName + userName +  password );
            //conn = DriverManager.getConnection(jdbc:mysql://127.0.0.1:10000/ck00113, ck00113, ck00113));
 
-        } catch (SQLException ex) {
-        //} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
+        //} catch (SQLException ex) {
+        } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, "Error connecting to database", ex);
         }
     }
@@ -116,12 +117,13 @@ public class DatabaseConnection {
      * statement. 
      * Parameter 'params' is used as the parameters of the statement.
      * The method returns the properties requested in List format along with the values from the database.
-
      */
+    
     public List<Map<String, Object>> queryDB(String sqlQuery, List<String> props, Object... params) throws SQLException {
         PreparedStatement ps = null;
+        
         List<Map<String, Object>> returnedProps = new ArrayList<>();
-
+        
         try {
             ps = createPreparedStatement(sqlQuery, params);
             ResultSet res = queryDB(ps);

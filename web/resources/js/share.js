@@ -2,7 +2,7 @@
 
 
 /*
- * Share Pinboard on Facebook 
+ * Share Pinboard on Facebook
  */
 $(function (d, s, id) {
     /*
