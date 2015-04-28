@@ -15,10 +15,13 @@ public class Utils {
      */
         public static String encodePassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        
+        if (password == null){
+            password = "password";
+        }
         //the return statement returns the password hashed. 
         return passwordEncoder.encode(password);
     }
+        
 
 }
 

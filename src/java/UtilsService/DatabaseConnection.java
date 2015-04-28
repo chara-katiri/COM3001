@@ -136,6 +136,9 @@ public class DatabaseConnection {
             ps = createPreparedStatement(sqlQuery, params);
             ResultSet res = queryDB(ps);
 
+            if (res== null){
+                 return returnedProps;
+            }
             while (res.next()) {
                 Map<String, Object> result = new HashMap<>();
 

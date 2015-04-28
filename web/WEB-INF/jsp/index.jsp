@@ -9,8 +9,8 @@
         <title>Pinboard</title>
 
         <c:url value='/resources' var="resourcesUrl" />
-       
-        
+
+
 
         <!--External JavaScript Files-->
         <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google+ Share -->
@@ -21,15 +21,15 @@
         <script src="${resourcesUrl}/js/share.js"></script>
         <script src="${resourcesUrl}/js/itemsList.js"></script>
         <script src="${resourcesUrl}/js/default.js"></script>
-        
+
         <!--Internal CSS Files-->
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/default.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/itemsList.css" />
-        
-         <!-- External CSS Files-->
+
+        <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
         <!--        Note for CK: the line of code below might not be required-->
-<!--        <link href="http://getbootstrap.com/examples/carousel/carousel.css" rel="stylesheet">  Bootstrap Carousel -->
+        <!--        <link href="http://getbootstrap.com/examples/carousel/carousel.css" rel="stylesheet">  Bootstrap Carousel -->
 
     </head>
 
@@ -93,42 +93,42 @@
         <!-- /.Nav Bar ends -->
 
 
+        <!--                menu -->
 
-        <!-- 2 columns of text for Categories -->
-
-        <div class="itemsList">
-   <!-- Books-->         
-            <div class="col-lg-2"> 
-
-                <img class="img-square" src="${resourcesUrl}/images/books.png" alt="Books" width="160" height="160">
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="img-square" src="${resourcesUrl}/images/books.png" alt="Books" width="140" height="140">
                 <h2>Books</h2>
                 <p>Second hand books available for sale.</p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- /Books -->
-            
-    <!--  Rooms-->
-            <div class="col-lg-2">
-                <img class="img-square" src="${resourcesUrl}/images/house.png" alt="Rooms" width="145" height="145">
-                <br>
-                <br>
-               
-                
+                <p><a class="btn btn-default" href="#" role="button">View books &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="img-square" src="${resourcesUrl}/images/house.png" alt="Rooms" width="140" height="140">
                 <h2>Rooms</h2>
                 <p>Requests for accommodation. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- Rooms -->
-            
-            </div>
-      
+                <p><a class="btn btn-default" href="#" role="button">View Rooms &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="img-square" src="${resourcesUrl}/images/star.png" alt="Favourites" width="140" height="140">
+                <h2>Favourites</h2>
+                <p> Please login to view your favourites. </p>
+                <p><a class="btn btn-default" href="#" role="button">View Favourites &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
 
 
-        <div class="share">           
+        <!--                /menu-->
+
+
+        <div style="position: absolute; bottom: 5px; background-color: green">
+            <div class="share">           
                 <div class="g-plus share-button" data-action="share"></div><br/>
                 <a class="twitter-share-button share-button" href="https://twitter.com/share">Tweet</a><br/>
                 <div class=" fb-share-button share-button" href="${pageContext.request.contextPath}"></div>       
-        </div> <!-- /.share -->
+            </div> <!-- /.share -->
+        </div>
 
-<!--        <hr class="featurette-divider">-->
+        <!--        <hr class="featurette-divider">-->
 
         <!-- Back to top button. It appears dynamically and once clicked to page scrolls back to top smoothly -->
         <a href="#" class="back-to-top btn btn-default">Back to Top </a> 
