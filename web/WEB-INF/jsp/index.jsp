@@ -95,7 +95,7 @@
 
         <!--                menu -->
 
-        <div class="row">
+        <div class="itemsList">
             <div class="col-lg-4">
                 <img class="img-square" src="${resourcesUrl}/images/books.png" alt="Books" width="140" height="140">
                 <h2>Books</h2>
@@ -116,11 +116,10 @@
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
-
         <!--                /menu-->
 
 
-        <div style="position: absolute; bottom: 5px; background-color: green">
+        <div style="position: absolute; bottom: 5px;">
             <div class="share">           
                 <div class="g-plus share-button" data-action="share"></div><br/>
                 <a class="twitter-share-button share-button" href="https://twitter.com/share">Tweet</a><br/>

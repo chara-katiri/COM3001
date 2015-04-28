@@ -15,7 +15,9 @@
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/itemsList.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/favourites.css" />
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
+        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/default.css" />
         
+
 
         <!--Internal JavaScript Files-->
         <script src="${resourcesUrl}/js/utils.js"></script>
@@ -23,7 +25,7 @@
         <script src="${resourcesUrl}/js/favourites.js"></script>
 
     </head>
-    
+
     <body>
         <div id="pageContextPath" data-page-context="${pageContext.request.contextPath}"></div>
         <div class="authorizeUser">
@@ -36,9 +38,13 @@
 
         <div class="itemsList"></div>
 
-
-        <!--        Functionality to allow the user navigate back to Home page-->
-        <p><a class="btn btn-primary btn-lg back-to-home" href="index">Back to home</a></p>
-       
+        <div style="position: absolute; bottom: 5px;">
+            <!--        Functionality to allow the user navigate back to Home page-->
+            <p><a class="btn btn-primary btn-lg back-to-home" href="index">Back to home</a></p>
+        </div>
+        
+        <!-- Back to top button. It appears dynamically and once clicked to page scrolls back to top smoothly -->
+        <a href="#" class="back-to-top btn btn-default">Back to Top </a> 
+        
     </body>
 </html>
