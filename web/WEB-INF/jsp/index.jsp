@@ -112,7 +112,7 @@
                 <img class="img-square" src="${resourcesUrl}/images/star.png" alt="Favourites" width="140" height="140">
                 <h2>Favourites</h2>
                 <p> Please login to view your favourites. </p>
-                <p><a class="btn btn-default" href="#" role="button">View Favourites &raquo;</a></p>
+                <p><a class="btn btn-default" href="/favourites" role="button">View Favourites &raquo;</a></p>
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
