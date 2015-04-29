@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
 
         <!--External JavaScript Files-->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- JQuery -->
     </head>
 

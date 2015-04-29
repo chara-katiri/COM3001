@@ -13,18 +13,18 @@
 
 
         <!--External JavaScript Files-->
-        <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google+ Share -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script> <!-- JQuery Form Validator -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google+ Share -->
 
         <!--Internal JavaScript Files-->
-        <script src="${resourcesUrl}/js/utils.js"></script>
-        <script src="${resourcesUrl}/js/share.js"></script>
         <script src="${resourcesUrl}/js/itemsList.js"></script>
+        <script src="${resourcesUrl}/js/share.js"></script>
+        <script src="${resourcesUrl}/js/utils.js"></script>       
         <script src="${resourcesUrl}/js/default.js"></script>
 
         <!--Internal CSS Files-->
+        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/itemsList.css" />       
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/default.css" />
-        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/itemsList.css" />
 
         <!-- External CSS Files-->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
