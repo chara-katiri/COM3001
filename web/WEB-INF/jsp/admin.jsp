@@ -5,6 +5,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@page session ="true"%>
 
 <!DOCTYPE html>
 <html>
@@ -90,8 +91,26 @@
             </div>
 
         </div>
-
+<!--csrt for log out-->
+        <form action="${logoutUrl}" method="post" id="logoutForm">
+	  <input type="hidden" 
+		name="${_csrf.parameterName}"
+		value="${_csrf.token}" />
+	</form>
+        
+        <script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>        
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+		<h2>
+			Welcome : ${pageContext.request.userPrincipal.name} | <a
+				href="javascript:formSubmit()"> Logout</a>
+		</h2>
+	</c:if>
+        
     </body>
 </html>

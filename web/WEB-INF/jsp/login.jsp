@@ -15,22 +15,23 @@
             <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
     </head>
 
-    <body>
+    <body onload='document.loginForm.username.focus();'>
         <!-- Login and logout container -->
         <div class="container">
             <c:url value='/login' var="loginUrl"></c:url>
 
-                <!-- Validation to ensure that values are submitted in order to login and then to allow you to logout-->
-                <form class="form" name='loginForm' action="${loginUrl}" method='POST'>
-                <h2 class="form-heading">Please Login to continue</h2>
-
                 <c:if test="${not empty error}">
                     <div class="error">${error}</div>
                 </c:if>
+                    
                 <c:if test="${not empty logout}">
                     <div class="logout">${logout}</div>
                 </c:if>
-
+                    
+                <!-- Validation to ensure that values are submitted in order to login and then to allow you to logout-->
+                <form class="form" name='loginForm' 
+                      action="${loginUrl}" method='POST'>
+                <h2 class="form-heading">Please Login to continue</h2>
                 <!--                 input text and validation   -->
                 <input class="form-control" type='text' name='username' placeholder="Username" required autofocus 
                        data-validation="length alphanumeric" 
@@ -44,6 +45,8 @@
                        data-validation-error-msg="The password must be at least 8 characters long "
                        />
                 <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login" />
+                
+<!--                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />-->
                 <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />  
                 <!--    Protection against CRSF attack. Hackers use Cross-Site Request Forgery attack in order to steal the cookies from the authenticated user. 
                         Docs.spring.io, 'Spring Security Reference', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-using. 

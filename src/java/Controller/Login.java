@@ -33,33 +33,54 @@ public class Login {
      *Parameter 'error' is an empty string. 
      */
 
-    /**
-     *
-     * @param error
-     * @param logout
-     * @return
-     */
-    
-   
+     @RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public ModelAndView admin() {
+ 
+		ModelAndView model = new ModelAndView();
+		model.addObject("error", "Invalid username or password");
+                model.addObject("logout", "Logout Successful.");
+		model.setViewName("admin");
+		return model;
+	}
+       
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-            
-    @RequestParam(value = "logout", required = false) String logout) {
+    public ModelAndView login(
+            @RequestParam(value = "error", required = false) String error,
+            @RequestParam(value = "logout", required = false) String logout) {
+ 
+            ModelAndView model = new ModelAndView();
+                if (error != null) {
+                    model.addObject("error", "Invalid username or password");
+             }
 
-        ModelAndView model = new ModelAndView();
-        if (error != null) {
-            model.addObject("error", "Invalid username or password");
-        }
+                if (logout != null) {        //Parameter 'logout' can be used if the user is already logged in. Parameter 'logout' is an empty string. 
+                     model.addObject("logout", "Logout Successful.");
+            }
+                     model.setViewName("login");
 
-        if (logout != null) {        //Parameter 'logout' can be used if the user is already logged in. Parameter 'logout' is an empty string. 
-            model.addObject("logout", "Logout Successful.");
-        }
-        model.setViewName("login");
-
-        return model;         // The return statement will return the ModelAndView for the login page along with appropriate messages. 
-
+                     return model;         // The return statement will return the ModelAndView for the login page along with appropriate messages. 
     }
+                             
 
+    /* replaced by the method shown above
+    public ModelAndView login(
+            @RequestParam(value = "error", required = false) String error,
+            @RequestParam(value = "logout", required = false) String logout) {
+
+             ModelAndView model = new ModelAndView();
+             if (error != null) {
+                 model.addObject("error", "Invalid username or password");
+             }
+
+            if (logout != null) {        //Parameter 'logout' can be used if the user is already logged in. Parameter 'logout' is an empty string. 
+                model.addObject("logout", "Logout Successful.");
+            }
+            model.setViewName("login");
+
+            return model;         // The return statement will return the ModelAndView for the login page along with appropriate messages. 
+    } */
+
+ 
     @RequestMapping(value = "/register", method = RequestMethod.GET)     //Request mapping to the register page. 
     public String register() {
         return "register";         //The return statement will return the file name of the register page.  
