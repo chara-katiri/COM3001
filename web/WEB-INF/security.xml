@@ -52,7 +52,7 @@
             />-->
             
             <user-service> 
-                <user name="ck00113" password="password123" authorities="ROLE_USER" />
+                <user name="ck00113" password="password123" authorities="ROLE_ADMIN" />
 <!--                <user name="abc00111" password="password123" authorities="ROLE_USER" />-->
             </user-service>
         </authentication-provider>
