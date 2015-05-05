@@ -8,10 +8,13 @@
             /WEB-INF/security.xml
         </param-value>
     </context-param>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
     
+    <listener> 
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
+    </listener> 
+    
+    
+        
     <!-- Spring Security. Declaration of filter. 
     DelegatingFilterFroxy class delegates to a filter implementation defined as 'springSecurityFilterChain' bean.
     Source: Docs.spring.io, '2. Security Namespace Configuration', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.0.x/reference/ns-config.html#ns-getting-started. [Accessed: 06- Apr- 2015].
@@ -56,7 +59,7 @@
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>2</load-on-startup>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     
     <servlet-mapping>
@@ -73,4 +76,5 @@
         <welcome-file>redirect.jsp</welcome-file>
     </welcome-file-list>
   
+
 </web-app>

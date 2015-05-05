@@ -16,6 +16,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script> <!-- JQuery Form Validator -->
         <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google+ Share -->
 
+
         <!--Internal JavaScript Files-->
         <script src="${resourcesUrl}/js/itemsList.js"></script>
         <script src="${resourcesUrl}/js/share.js"></script>
@@ -133,7 +134,6 @@
         <a href="#" class="back-to-top btn btn-default">Back to Top </a> 
 
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-        <script src="${resourcesUrl}/js/register.js"></script>
     </body>
 
 </html>

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,10 +44,9 @@ public class Login {
 		return model;
 	}
         
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)     //Request mapping to the register page. 
     public String login() {
-        return "login";         //The return statement will return the file name of the register page.  
+        return "login"; 
     }    
        
     @RequestMapping(value = "/login", method = RequestMethod.POST)

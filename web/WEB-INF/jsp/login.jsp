@@ -10,7 +10,9 @@
         <c:url value='/resources' var="resourcesUrl"></c:url>
             <!-- External CSS Files-->
             <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
-
+            <script scr="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+            <script src="js/jquery.validate.js"></script>
+            
             <!--Internal CSS Files-->
             <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/forms.css" />
     </head>
@@ -18,7 +20,12 @@
     <body onload='document.loginForm.username.focus();'>
         <!-- Login and logout container -->
         <div class="container">
-            <c:url value='/login' var="loginUrl"></c:url>
+            
+                    
+                <!-- Validation to ensure that values are submitted in order to login and then to allow you to logout-->
+                <form class="form" name='loginForm'  action="${loginUrl}" method='POST'>
+                
+                <c:url value='/login' var="loginUrl"></c:url>
 
                 <c:if test="${not empty error}">
                     <div class="error">${error}</div>
@@ -27,10 +34,8 @@
                 <c:if test="${not empty logout}">
                     <div class="logout">${logout}</div>
                 </c:if>
-                    
-                <!-- Validation to ensure that values are submitted in order to login and then to allow you to logout-->
-                <form class="form" name='loginForm' 
-                      action="${loginUrl}" method='POST'>
+                
+                
                 <h2 class="form-heading">Please Login to continue</h2>
                 <!--                 input text and validation   -->
                 <input class="form-control" type='text' name='username' placeholder="Username" required autofocus 
@@ -56,6 +61,9 @@
                 <a class="btn btn-primary" href="index">Back to home</a>
                 <a class="btn btn-primary" href="register">Register</a>
             </form>
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.1/jquery.form-validator.min.js"></script>
+                <script> $("#loginForm").validate(); </script> 
         </div> <!-- end of login and logout container -->
     </body>
 </html>

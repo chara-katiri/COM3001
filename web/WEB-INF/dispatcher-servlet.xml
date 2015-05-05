@@ -24,13 +24,13 @@
     <mvc:annotation-driven/>
     <mvc:resources mapping="/css/**"  location="/WEB-INF/resources/css/" />
     <mvc:resources mapping="/images/**"  location="/WEB-INF/resources/images/" />
-<!--    <mvc:resources mapping="/js/**" location="/WEB-INF/resources/js/"/>-->
+    <mvc:resources mapping="/js/**" location="/WEB-INF/resources/js/"/>
     
     
     
-<!--    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
     
-     The using ParameterizableViewController is used for the index controller. The mapping is done here 
+<!--     The using ParameterizableViewController is used for the index controller. The mapping is done here 
     <bean 
         id="urlMapping" 
         class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -41,15 +41,20 @@
         </property>
     </bean>
    
-      The index controller.
+     The index controller.
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
 
-    <bean id="Favourites" class="Controller.Favourites" p:datasource-ref="dataSource" />
+   <bean id="Favourites" class="Controller.Favourites" p:datasource-ref="dataSource" />
     <bean id="Home" class="Controller.Home" p:datasource-ref="dataSource" />
     <bean id="Items" class="Controller.Items" p:datasource-ref="dataSource" />
-    <bean id="Login" class="Controller.Login" p:datasource-ref="dataSource" />-->
-<!--    <bean id="DatabaseConnection" class="UtilsService"/> -->
+    <bean id="Login" class="Controller.Login" p:datasource-ref="dataSource" />
+   <bean id="DatabaseConnection" class="UtilsService.DatabaseConnection"/>
+   <bean id="Login" class="Controller.Login">
+       <property name="commandName"><value>Login</value></property>
+        <property name="commandClass"><value>Controller.Login</value></property>
+    </bean> -->
+   
     
 </beans>

@@ -42,22 +42,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests()
-                .antMatchers("/favourites").access("hasRole('ROLE_USER')")
-                .antMatchers("/items/manage").access("hasRole('ROLE_ADMIN')")
-                .and()
+        http
+                .authorizeRequests()
+                    .antMatchers("/favourites").access("hasRole('ROLE_USER')")
+                    .antMatchers("/items/manage").access("hasRole('ROLE_ADMIN')")
+                    .and()
                 .formLogin()
-                .loginPage("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/index")
-                .and()
+                    .loginPage("/login")
+                    .usernameParameter("username")
+                    .passwordParameter("password")
+                    .defaultSuccessUrl("/index")
+                    .and()
                 .logout()
-                .logoutSuccessUrl("/index")
-                .invalidateHttpSession(true)
-                .and()
+                    .logoutSuccessUrl("/index")
+                    .invalidateHttpSession(true)
+                    .and()
                 .exceptionHandling()
-                .accessDeniedPage("/errorPage");
+                    .accessDeniedPage("/errorPage");
     }
 
     /**
