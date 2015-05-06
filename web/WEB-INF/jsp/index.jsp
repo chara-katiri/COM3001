@@ -58,7 +58,7 @@
                     <a class="navbar-brand" href="#">Pinboard</a>
                 </div><!-- /.navbar-header -->
 
-                <div id="navbar" class="collapse navbar-collapse">
+                <div id="navbar" class="active">
                     <ul class="nav navbar-nav">
                         <c:url value='/favourites' var="favouritesUrl" />
                         <li><a href="${favouritesUrl}">Favourites</a></li>
@@ -77,37 +77,11 @@
                             </c:when>
 
                             <c:otherwise>
-                                <li><a href="/login">Login</a>
-                                <c:url value='/login' var="loginUrl" />
-                                        <form class="navbar-form" name='loginForm' action="${loginUrl}" method='POST'>
-                                            <input class="form-control" type='text' name='username' placeholder="Username" />
-                                            <input class="form-control" type='password' name='password' placeholder="Password" />
-                                            <input class="btn btn-default" name="submit" type="submit" value="Login" />
-                                            <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                        </form>
-                                </li>
+                                <c:url value='/login' var="loginUrl"></c:url>
+                                <li><a href="/login">Login</a></li>
                                 
-                                <li><a href="/register">Register</a>
-                                  <c:url value='/register' var="registerUrl" />
-                                        <form class="navbar-form" name="registrationForm" action="${registerUrl}" method="POST">
-                                            <input class="form-control" type="text" name="username" placeholder="Username"
-                                                   data-validation="length alphanumeric" 
-                                                   data-validation-length="4-12"
-                                                   data-validation-error-msg="The username has to contain at least 4 characters " />
-                                            <input class="form-control" type="password" name="pass_confirmation" placeholder="Password (Min 8 Characters)"
-                                                   data-validation="length"
-                                                   data-validation-length="min8"
-                                                   data-validation-error-msg="password need to contain at least 8 characters " />
-                                            <input class="form-control" type="password" name="pass" placeholder="Confirm Password"
-                                                   data-validation="confirmation">
-                                            <input class="form-control" type="text" name="name" placeholder="Name" />
-                                            <input class="form-control" type="email" name="email" placeholder="Email"
-                                                   data-validation="email" />
-                                            <input class="btn btn-default" type="submit" value="Register" />
-                                            <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                        </form>                    
-                                </li>
-                                
+                                <c:url value='/register' var="registerUrl" />
+                                <li><a href="/register">Register</a></li>                                 
                            </c:otherwise>
 
                         </c:choose>        

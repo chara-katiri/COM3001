@@ -45,9 +45,9 @@ public class Login {
 	}
         
     @RequestMapping(value = "/login", method = RequestMethod.GET)     //Request mapping to the register page. 
-    public String login() {
+        public String login() {
         return "login"; 
-    }    
+    }   
        
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public @ResponseBody ModelAndView login(
@@ -66,7 +66,8 @@ public class Login {
 
                      return model;         // The return statement will return the ModelAndView for the login page along with appropriate messages. 
     }
-                   
+        
+ 
     
 
     /* replaced by the method shown above
@@ -123,7 +124,7 @@ public class Login {
 
         model.addAttribute("result", result);
 
-        return "result"; //The return statement will return the file name of the register page. 
+        return "sucessfully registered"; //The return statement will return the file name of the register page. 
     }
 
 
