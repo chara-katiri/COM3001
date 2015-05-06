@@ -79,7 +79,7 @@
                         <input class="form-control" type="text" name="title" placeholder="Item Title" />
                         <input class="form-control" type="text" name="description" placeholder="Description" />
                         <input class="form-control" type="double" name="price" placeholder="Price" />
-                        <input class="form-control" type="text" name="category" placeholder="Category" />
+                        <input class="form-control last input" type="text" name="category" placeholder="Category" data-validation="url"/>
 
                         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Add" />
                         <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -87,31 +87,10 @@
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="delete">
                     <div class="itemsList"></div>
-                </div>
+                </div> <!--tab panel--> 
+            </div> <!--tab content -->
+        </div> <!--tab panel outer -->
 
-            </div>
-
-        </div>
-<!--csrt for log out-->
-        <form action="${logoutUrl}" method="post" id="logoutForm">
-	  <input type="hidden" 
-		name="${_csrf.parameterName}"
-		value="${_csrf.token}" />
-	</form>
-        
-        <script>
-		function formSubmit() {
-			document.getElementById("logoutForm").submit();
-		}
-	</script>        
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
-		<h2>
-			Welcome : ${pageContext.request.userPrincipal.name} | <a
-				href="javascript:formSubmit()"> Logout</a>
-		</h2>
-	</c:if>
-        
     </body>
 </html>

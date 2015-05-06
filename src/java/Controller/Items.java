@@ -105,7 +105,7 @@ public class Items {
      *Parameter 'sqlQuery' defines the items that need to be returned. 
      *Parameter 'params' defines the parameters for the SQL query.
      */
-    public List<IItem> constructItemsList(String sqlQuery, Object... params) {
+    private List<IItem> constructItemsList(String sqlQuery, Object... params) {
         List<IItem> items = new ArrayList<>(); // creation of empty array list for the items
 
         try {
@@ -117,6 +117,9 @@ public class Items {
                 String description = (String) r.get("Description");
                 double price = (double) r.get("Price");
                 String category = (String) r.get("Category");
+                Map flags = null;
+                
+                //CK double check this
                 items.add(id, null);
             };
 

@@ -19,8 +19,8 @@
             
         <!--External  Jquery -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <!--Internal JavaScript Files-->
         
+        <!--Internal JavaScript Files-->        
         <script src="${resourcesUrl}/js/utils.js"></script>
         <script src="${resourcesUrl}/js/itemsList.js"></script>
         <script src="${resourcesUrl}/js/favourites.js"></script>

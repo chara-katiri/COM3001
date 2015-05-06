@@ -48,21 +48,21 @@ public class DatabaseConnection {
         String dbName = config.getPropertyValue("dbName");
         String userName = config.getPropertyValue("dbUserName");
         String password = config.getPropertyValue("dbPassword");
-       // String driver = config.getPropertyValue("dbDriver");
+        String driver = config.getPropertyValue("dbDriver");
 
 //        String url = "jdbc:mysql://127.0.0.1:10000/";
 //        String dbName = "ck00113";
 //        String userName = "ck00113";
 //        String password = "ck00113";
-    String driver="com.mysql.jdbc.Driver";
+//    String driver="com.mysql.jdbc.Driver";
 
         try {
             Class.forName(driver).newInstance();
             conn = DriverManager.getConnection(url + dbName, userName, password);
-            //conn = DriverManager.getConnection(url + dbName + userName +  password );
+//conn = DriverManager.getConnection(url + dbName + userName +  password );
            //conn = DriverManager.getConnection(jdbc:mysql://127.0.0.1:10000/ck00113, ck00113, ck00113));
 
-        //} catch (SQLException ex) {
+        
         } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, "Error connecting to database", ex);
         }
@@ -120,8 +120,6 @@ public class DatabaseConnection {
      * statement. 
      * Parameter 'params' is used as the parameters of the statement.
      * The method returns the properties requested in List format along with the values from the database.
-     * @param sqlQuery
-     * @param props
      * @param params
      * @return 
      * @throws java.sql.SQLException
@@ -136,9 +134,9 @@ public class DatabaseConnection {
             ps = createPreparedStatement(sqlQuery, params);
             ResultSet res = queryDB(ps);
 
-            if (res== null){
-                 return returnedProps;
-            }
+//            if (res== null){
+//                 return returnedProps;
+//            }
             while (res.next()) {
                 Map<String, Object> result = new HashMap<>();
 
