@@ -34,7 +34,7 @@ public class Login {
      *Parameter 'error' is an empty string. 
      */
 
-     @RequestMapping(value = "/admin", method = RequestMethod.GET)
+     /* @RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public ModelAndView admin() {
  
 		ModelAndView model = new ModelAndView();
@@ -42,12 +42,12 @@ public class Login {
                 model.addObject("logout", "Logout Successful.");
 		model.setViewName("admin");
 		return model;
-	}
+	}*/
         
     @RequestMapping(value = "/login", method = RequestMethod.GET)     //Request mapping to the register page. 
         public String login() {
         return "login"; 
-    }   
+    }  
        
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public @ResponseBody ModelAndView login(
@@ -100,8 +100,7 @@ public class Login {
      * Parameter 'model' is used to display the register result message on result page.
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    
-    public  @ResponseBody String register(@ModelAttribute User user, ModelMap model) {
+    public String register(@ModelAttribute User user, ModelMap model) {
         
         dbConnection = DatabaseConnection.getInstance();
 
@@ -124,7 +123,9 @@ public class Login {
 
         model.addAttribute("result", result);
 
-        return "sucessfully registered"; //The return statement will return the file name of the register page. 
+//        return "result"; //The return statement will return the file name of the register page. 
+
+        return "result"; //The return statement will return the file name of the register page. 
     }
 
 
