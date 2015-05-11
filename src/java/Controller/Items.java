@@ -1,7 +1,6 @@
 package Controller;
 
 import ItemsModel.BaseItem;
-import ItemsModel.BookItem;
 import ItemsModel.IItem;
 import UtilsService.DatabaseConnection;
 import java.security.Principal;
