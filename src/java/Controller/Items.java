@@ -110,6 +110,7 @@ public class Items {
             List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("Items_ID", "Title", "Description", "Price", "Category"), params);
 
             for (Map<String, Object> r : res) {
+                
                 int id = (int) r.get("Items_ID");
                 String title = (String) r.get("Title");
                 String description = (String) r.get("Description");

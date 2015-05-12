@@ -23,6 +23,12 @@ public class BaseItem implements IItem {
         this.price = price;
         this.category = category;
     }
+
+//     default constructor 
+    public BaseItem() {
+    }
+     
+     
      
     /*
     Accessor method for type
