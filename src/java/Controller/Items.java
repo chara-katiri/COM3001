@@ -2,13 +2,12 @@ package Controller;
 
 import ItemsModel.BaseItem;
 import ItemsModel.IItem;
+import ItemsModel.BookItem;
 import UtilsService.DatabaseConnection;
 import java.security.Principal;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -50,10 +49,10 @@ public class Items {
      */
 //  public List<IItem> getItemsFavourites(Principal principal) throws SQLException {
     public List<IItem> getItemsFavourites(Principal principal) {
-        String queryFavourites = "SELECT i.ItemsID, i.Title, i.Description, i.Price, i.Category "
+        String queryFavourites = "SELECT i.Items_ID, i.Title, i.Description, i.Price, i.Category "
                 + "FROM items i "
                 + "INNER JOIN user_favourites uf "
-                + "ON f.ItemsID = uf.Favourite JOIN users u "
+                + "ON f.Items_ID = uf.Favourite JOIN users u "
                 + "ON uf.username = u.username "
                 + "WHERE u.username = ?";
 
@@ -94,7 +93,7 @@ public class Items {
     @RequestMapping(value = "/manage/remove", method = RequestMethod.POST)
     public String removeItem(int itemId) {
 
-        String removeFavourite = "DELETE FROM items WHERE ItemsID=?";
+        String removeFavourite = "DELETE FROM items WHERE Items_ID=?";
         dbConnection.updateDB(removeFavourite, itemId);
         return "admin";
     }
@@ -108,20 +107,20 @@ public class Items {
         List<IItem> items = new ArrayList<>(); // creation of empty array list for the items
 
         try {
-            List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("itemsID", "Title", "Description", "Price", "Category"), params);
+            List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("Items_ID", "Title", "Description", "Price", "Category"), params);
 
             for (Map<String, Object> r : res) {
-                int id = (int) r.get("itemsID");
+                int id = (int) r.get("Items_ID");
                 String title = (String) r.get("Title");
                 String description = (String) r.get("Description");
                 double price = (double) r.get("Price");
                 String category = (String) r.get("Category");
                 Map flags = null;
                 
-                //CK double check this
-                items.add(id, null);
-            };
+                  items.add(new BookItem (id, title, description, price, category, flags));
 
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, "Error executing SQL query", ex);
         } catch (NullPointerException ex) {

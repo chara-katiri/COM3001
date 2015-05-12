@@ -13,11 +13,11 @@ public enum ItemType {
   /**
      * Books 
      */
-    BOOK,
+    BOOKS,
 
     /**
      * Accommodation
      */
-    ROOM
+    ROOMS
   
 }

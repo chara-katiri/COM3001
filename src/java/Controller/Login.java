@@ -121,8 +121,6 @@ public class Login {
 
         model.addAttribute("result", result);
 
-//        return "result"; //The return statement will return the file name of the register page. 
-
         return "result"; //The return statement will return the file name of the register page. 
     }
 

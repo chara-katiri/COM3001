@@ -48,92 +48,101 @@
         <div id="pageContextPath" data-page-context="${pageContext.request.contextPath}"></div>
         <div id="csrfToken" name="${_csrf.parameterName}" data-csrf-token="${_csrf.token}"></div>
 
-        <script>
-            function formSubmit() {
-                document.getElementById("logoutForm").submit();
-            }
-        </script>
+        <!--        <script>
+                    function formSubmit() {
+                        document.getElementById("logoutForm").submit();
+                    }
+                </script>-->
 
-        <!--<div role="tabpanel">-->
-        <nav class="navbar navbar-fixed-top navbar-inverse" role="tabpanel">
+        <!--        <div role="tabpanel">
+                <nav class="navbar navbar-fixed-top navbar-inverse" role="tabpanel">
+        
+                               added here starts  ****
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Pinboard</a>
+                        </div> /.navbar-header 
+        
+                        <div id="navbar" class="active">
+                            <ul class="nav navbar-nav">
+        
+                                <li><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                                <li><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add Item</a></li>
+                                <li><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete Item</a></li>
+        
+                            </ul>
+                        </div> -->
 
-            <!--           added here starts  ****-->
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Pinboard</a>
-                </div><!-- /.navbar-header -->
+        <!--      added here finishes      ****-->
 
-                <div id="navbar" class="active">
-                    <ul class="nav navbar-nav">
 
-                        <li><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                        <li><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add Item</a></li>
-                        <li><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete Item</a></li>
 
-                    </ul>
+        <!-- Creation of different tabs on navigation menu: Home, Add Item, Delete Item  
+             data-toggle="tab" is used to create tab components. 
+        -->
+        <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
+            <li role="presentation" class="active">
+                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
+            </li>
+
+            <li role="presentation">
+                <a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add Item</a>
+            </li>
+            <li role="presentation">
+                <a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete Item</a>
+            </li>
+        </ul>
+
+        <!-- Bootstrap Tabs via Data Attributes.
+             Source: a. Mark Otto, 'JavaScript · Bootstrap', Getbootstrap.com, 2015. [Online]. Available: http://getbootstrap.com/javascript/. [Accessed: 04- Feb- 2015].
+             tab-content represents the parent element
+        -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="home">
+                <div class="jumbotron">
+                    <h1>Welcome to Pinboard <c:out value="${pageContext.request.userPrincipal.name}" /></h1>
                 </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="add">
+                
+                <c:url value='/items/manage/add' var="addUrl"></c:url>
 
-                <!--      added here finishes      ****-->
+                    <form class="form" id="registrationForm" action="${addUrl}" method="POST">
+                    <h2 class="form-heading">Pin New Item on Pinboard</h2>
 
+                    <input class="form-control" type="text" name="title" placeholder="Item Title" />
+                    <input class="form-control" type="text" name="description" placeholder="Description" />
+                    <input class="form-control" type="double" name="price" placeholder="Price" />
+                    <input class="form-control last input" type="text" name="category" placeholder="Category"/> 
+                    <!--                            <select>
+                                                    <option value=“BOOK”>Books</option>
+                                                    <option value=“ROOM”>Rooms</option>
+                                                </select>-->
 
+                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Add" />
+                    <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                </form>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="delete">
+                <div class="itemsList"></div>
+            </div> <!--tab panel--> 
+        </div> <!--tab content -->
+    </div> <!--tab panel outer -->
 
-                <!-- Creation of different tabs on navigation menu: Home, Add Item, Delete Item  
-                     data-toggle="tab" is used to create tab components. 
-                -->
-                <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
-                    <li role="presentation" class="active">
-                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
-                    </li>
+    <div class="jumbotron" style="position: absolute; bottom: 10px;">
+        <!--        Functionality to allow the user navigate back to Home page-->
+        <p><a class="btn btn-primary btn-lg" href="/Pinboard/index">Back to Pinboard homepage </a></p>
+    </div>
 
-                    <li role="presentation">
-                        <a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add Item</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete Item</a>
-                    </li>
-                </ul>
-
-                <!-- Bootstrap Tabs via Data Attributes.
-                     Source: a. Mark Otto, 'JavaScript · Bootstrap', Getbootstrap.com, 2015. [Online]. Available: http://getbootstrap.com/javascript/. [Accessed: 04- Feb- 2015].
-                     tab-content represents the parent element
-                -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="home">
-                        <div class="jumbotron">
-                            <h1>Welcome to Pinboard <c:out value="${pageContext.request.userPrincipal.name}" /></h1>
-                            <p><a class="btn btn-primary btn-lg" href="/Pinboard/index">Back to Pinboard homepage</a></p>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="add">
-                        <c:url value='pinboard/manage/add' var="addUrl"></c:url>
-                        <form class="form" id="registrationForm" action="${addUrl}" method="POST">
-                            <h2 class="form-heading">Pin New Item on Pinboard</h2>
-
-                            <input class="form-control" type="text" name="title" placeholder="Item Title" />
-                            <input class="form-control" type="text" name="description" placeholder="Description" />
-                            <input class="form-control" type="double" name="price" placeholder="Price" />
-                            <input class="form-control last input" type="text" name="category" placeholder="Category" data-validation="url"/> 
-                            <select>
-                                <option value=“BOOK”>Books</option>
-                                <option value=“ROOM”>Rooms</option>
-                            </select>
-
-                            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Add" />
-                            <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                        </form>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="delete">
-                        <div class="itemsList"></div>
-                    </div> <!--tab panel--> 
-                </div> <!--tab content -->
-            </div> <!--tab panel outer -->
-
-            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    </body>
+    <!-- Back to top button. It appears dynamically and once clicked to page scrolls back to top smoothly -->
+    <a href="#" class="back-to-top btn btn-default">Back to Top </a> 
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="${resourcesUrl}/js/itemsAdmin.js"></script>
+</body>
 </html>

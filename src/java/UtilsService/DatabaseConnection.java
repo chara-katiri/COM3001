@@ -59,7 +59,7 @@ public class DatabaseConnection {
         try {
             Class.forName(driver).newInstance();
             conn = DriverManager.getConnection(url + dbName, userName, password);
-//conn = DriverManager.getConnection(url + dbName + userName +  password );
+            //conn = DriverManager.getConnection(url + dbName + userName +  password );
            //conn = DriverManager.getConnection(jdbc:mysql://127.0.0.1:10000/ck00113, ck00113, ck00113));
 
         

@@ -9,43 +9,43 @@ public class User {
     private String password;
     private String email; 
 
-    /**
-     * @return the username
+    /*
+    Accessor method for  username
      */
     public String getUsername() {
         return username;
     }
 
-    /**
-     * @param username the username to set
+    /*
+    Mutator method for username 
      */
     public void setUsername(String username) {
         this.username = username;
     }
 
-    /**
-     * @return the password
+    /*
+    Accessor method for  password
      */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * @param password the password to set
+    /*
+    Mutator method for  password 
      */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /**
-     * @return the email
+    /*
+    Accessor method for email
      */
     public String getEmail() {
         return email;
     }
 
-    /**
-     * @param email the email to set
+    /*
+    Mutator method for email 
      */
     public void setEmail(String email) {
         this.email = email;

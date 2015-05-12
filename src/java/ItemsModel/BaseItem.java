@@ -6,92 +6,110 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 
 public class BaseItem implements IItem {
-    private int itemsID;
+   
+    private ItemType type;
+    private int id;
     private String title;
     private String description;
     private double price;
     private String category;
 
-    public BaseItem (int itemsID, String title, String description, double price, String category){
-    this.itemsID=itemsID;
-    this.title=title;
-    this.description=description; 
-    this.price=price;
-    this.category=category;
-}
-    /**
-     * @return the itemsID
-     */
-    public int getItemsID() {
-        return itemsID;
+    
+     public BaseItem(ItemType type, int id, String title, String description, double price, String category) {
+        this.type = type;
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+    }
+     
+    /*
+    Accessor method for type
+    */
+   public ItemType getType(){
+       return type;
+   }
+   
+   /*
+   Mutator method for type
+   */
+   public void setType (ItemType type){
+       this.type = type;
+   }
+   
+   /*
+   Accessor method for id
+   */
+  
+    public int getid() {
+        return id;
     }
 
-    /**
-     * @param itemsID the itemsID to set
-     */
-    public void setItemsID(int itemsID) {
-        this.itemsID = itemsID;
+    /*
+    mutator method for id
+    */
+    public void setId (int id){
+       this.id = id; 
     }
 
-    /**
-     * @return the Title
-     */
+    /*
+    Accessor method for title
+    */
     public String getTitle() {
         return title;
     }
 
-    /**
-     * @param Title the Title to set
-     */
+    /*
+    Mutator method for title
+    */
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**
-     * @return the Description
+    /*
+      Accessor method for description 
      */
     public String getDescription() {
         return description;
     }
 
-    /**
-     * @param Description the Description to set
+    /*
+     Mutator method for description
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    /**
-     * @return the Price
+    /*
+     Accessor method for price
      */
     public double getPrice() {
         return price;
     }
 
-    /**
-     * @param Price the Price to set
+    /*
+    Mutator method for price
      */
     public void setPrice(double price) {
         this.price = price;
     }
 
-    /**
-     * @return the Category
+    /*
+    Accessor method for category
      */
     public String getCategory() {
         return category;
     }
 
-    /**
-     * @param Category the Category to set
+    /*
+    Mutator method for category
      */
     public void setCategory(String category) {
         this.category = category;
     }
-    
- 
-  
-  
+
+   
           
   
 }
