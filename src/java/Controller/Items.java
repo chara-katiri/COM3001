@@ -3,6 +3,7 @@ package Controller;
 import ItemsModel.BaseItem;
 import ItemsModel.IItem;
 import ItemsModel.BookItem;
+import ItemsModel.RoomItem;
 import UtilsService.DatabaseConnection;
 import java.security.Principal;
 import java.sql.SQLException;
@@ -83,8 +84,13 @@ public class Items {
 
         String insertItem = "INSERT INTO items (Title, Description, Price, Category) VALUES (?, ?, ?, ?);";
 
+        
+//        String insertItem = "INSERT INTO 'items' (?, ?, ?, ?) VALUES (?, ?, ?, ?);";
+
+                System.out.println ("Item="+
+                item.getTitle()+ item.getDescription()+ item.getPrice()+ item.getCategory());
         dbConnection.executeSQL(insertItem,
-                item.getTitle(), item.getDescription(), item.getPrice(), item.getCategory());
+                item.getTitle(), item.getDescription(), item.getDPrice(), item.getCategory());
 
         return "admin";
     }
@@ -106,22 +112,45 @@ public class Items {
     private List<IItem> constructItemsList(String sqlQuery, Object... params) {
         List<IItem> items = new ArrayList<>(); // creation of empty array list for the items
 
+//        for (Map<String, Object> r : res) {
         try {
             List<Map<String, Object>> res = dbConnection.queryDB(sqlQuery, Arrays.asList("Items_ID", "Title", "Description", "Price", "Category"), params);
 
             for (Map<String, Object> r : res) {
-                
+
                 int id = (int) r.get("Items_ID");
                 String title = (String) r.get("Title");
                 String description = (String) r.get("Description");
                 double price = (double) r.get("Price");
                 String category = (String) r.get("Category");
                 Map flags = null;
-                
-                  items.add(new BookItem (id, title, description, price, category, flags));
 
+                if ("BOOKS".equals(category)) {
+                    items.add(
+                            new BookItem(
+                                    id,
+                                    title,
+                                    description,
+                                    price,
+                                    category,
+                                    flags
+                            )
+                    );
+
+                } else {
+                    items.add(
+                            new RoomItem(
+                                    id,
+                                    title,
+                                    description,
+                                    price,
+                                    category,
+                                    flags
+                            )
+                    );
+                }
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, "Error executing SQL query", ex);
         } catch (NullPointerException ex) {

@@ -4,33 +4,33 @@
 /*
  * Share Pinboard on Facebook
  */
+
+    
+
 $(function (d, s, id) {
     /*
      * Use of "use strict"; to define that JavaScript code should be executed in "strict mode" undeclared variables cannot be used..
      *  W3schools.com, 'JavaScript "use strict"', 2015. [Online]. Available: http://www.w3schools.com/js/js_strict.asp. [Accessed: 10- Feb- 2015].
      */
-
     "use strict";
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {
-        return;
-    }
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        
+        
+
 
 /*
  * Share Pinboard on Twitter
  */
 $(function (d, s, id) {
-
-    /*
-     * Use of "use strict"; to define that JavaScript code should be executed in "strict mode".
-     * W3schools.com, 'JavaScript "use strict"', 2015. [Online]. Available: http://www.w3schools.com/js/js_strict.asp. [Accessed: 10- Feb- 2015].  
-     */
-    "use strict";
+        "use strict";
     var t, js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
         return;

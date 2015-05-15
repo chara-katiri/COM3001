@@ -113,6 +113,7 @@ public class DatabaseConnection {
      * @param sqlQuery
      * @param props
      * @param sqlQuery
+     * 
      * The SQL statements will be executed as PreparedStatements with specific
      * parameters. 
      * Parameter 'sqlToExecute' is used to execute the statement.
@@ -237,7 +238,10 @@ public class DatabaseConnection {
                             ps.setString(i + 1, (String) param);
                         } else if (paramClass == Integer.class) {
                             ps.setInt(i + 1, (int) param);
-                        } else if (paramClass == Float.class) {
+                        } 
+                        else if (paramClass == Double.class) {
+                            ps.setDouble(i + 1, (double) param);
+                        }else if (paramClass == Float.class) {
                             ps.setFloat(i + 1, (float) param);
                         } else {
                             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, "PreparedStatement set method not mapped");

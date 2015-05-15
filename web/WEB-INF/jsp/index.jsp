@@ -22,7 +22,7 @@
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/itemsList.css" />       
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/default.css" />
 
-        
+
         <!--External JavaScript Files-->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script> <!-- JQuery Form Validator -->
         <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google+ Share -->
@@ -33,146 +33,157 @@
         <script src="${resourcesUrl}/js/utils.js"></script>       
         <script src="${resourcesUrl}/js/default.js"></script>
 
-        
-          <style>
-            .jumbotron {
-                padding: 50px;
-            }
-        </style>
-        
-    </head>
-
-    <body>
-        <div id="pageContextPath" data-page-context="${pageContext.request.contextPath}"></div>
-        <div class="authorizeUser">
-            <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"> 
-                <div class="toggleFavourite"></div>
-            </sec:authorize>
-        </div>
-
-        <script>
-            function formSubmit() {
-                document.getElementById("logoutForm").submit();
-            }
-        </script>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 
 
-        <!-- Nav Bar beginning -->
+</head>
 
-        <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Pinboard</a>
-                </div><!-- /.navbar-header -->
+<body>
+    <div id="pageContextPath" data-page-context="${pageContext.request.contextPath}"></div>
+    <div class="authorizeUser">
+        <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"> 
+            <div class="toggleFavourite"></div>
+        </sec:authorize>
+    </div>
 
-                <div id="navbar" class="active">
-                    <ul class="nav navbar-nav">
-                        <c:url value='/favourites' var="favouritesUrl" />
-                        <li><a href="${favouritesUrl}">Favourites</a></li>
+    <script>
+        function formSubmit() {
+            document.getElementById("logoutForm").submit();
+        }
+    </script>
 
-                        <c:choose>
-                            <c:when test="${pageContext.request.userPrincipal.name != null}">
-                                <li><a>Welcome <c:out value="${pageContext.request.userPrincipal.name}" /></a></li>
-                                <li><a href="javascript:formSubmit()">Logout</a></li>
 
-                                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                    <c:url value='/items/manage' var="manageItemsUrl"/>
-                                    <li>
-                                        <a href="${manageItemsUrl}">Manage Items</a>
-                                    </li>
-                                </sec:authorize>
-                            </c:when>
+    <!-- Nav Bar beginning -->
 
-                            <c:otherwise>
-                                <c:url value='/login' var="loginUrl"></c:url>
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header" aria-expanded="false" aria-controls="navbar" >
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Pinboard</a>
+            </div><!-- /.navbar-header -->
+
+            <div id="navbar" class="active">
+                <div class="nav navbar-nav">
+                    <c:url value='/favourites' var="favouritesUrl" />
+                    <li><a href="${favouritesUrl}">Favourites</a></li>
+
+                    <c:choose>
+                        <c:when test="${pageContext.request.userPrincipal.name != null}">
+                            <li><a>Welcome <c:out value="${pageContext.request.userPrincipal.name}" /></a></li>
+                            <li><a href="javascript:formSubmit()">Logout</a></li>
+
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <c:url value='/items/manage' var="manageItemsUrl"/>
+                                <li>
+                                    <a href="${manageItemsUrl}">Manage Items</a>
+                                </li>
+                            </sec:authorize>
+                        </c:when>
+
+                        <c:otherwise>
+                            <c:url value='/login' var="loginUrl"></c:url>
                                 <li><a href="/login">Login</a></li>
-                                
-                                <c:url value='/register' var="registerUrl" />
-                                <li><a href="/register">Register</a></li>                                 
-                           </c:otherwise>
 
-                        </c:choose>        
+                            <c:url value='/register' var="registerUrl" />
+                            <li><a href="/register">Register</a></li>                                 
+                            </c:otherwise>
 
-
-<!--                        <ul>
-                            <li class="active"><a href="/favourites">Favourites</a></li>
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/register">Register</a></li>
-                        </ul>-->
-
-<!--                        Functionality that allows the users to search items 
-                        <form class="navbar-form navbar-right">
-                            <input type="text" class="form-control" placeholder="Search...">
-                        </form>-->
+                    </c:choose>        
 
 
-                        <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-                            <c:url value="/logout" var="logoutUrl" />
-                            <!-- Protection against CRSF attack. 
-                            Hackers use Cross-Site Request Forgery attack in order to steal the cookies from the authenticated user. 
-                            Docs.spring.io, 'Spring Security Reference', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-using. [Accessed: 09- Feb- 2015].-->
-                            <form action="${logoutUrl}" method="POST" id="logoutForm">
-                                <input type="hidden" name="${_csrf.parameterName}"
-                                       value="${_csrf.token}" />
-                            </form>
-                        </sec:authorize>
-                    </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container -->
-            </nav><!-- /.navbar -->
+                    <!--                        <ul>
+                                                <li class="active"><a href="/favourites">Favourites</a></li>
+                                                <li><a href="/login">Login</a></li>
+                                                <li><a href="/register">Register</a></li>
+                                            </ul>-->
 
-            <!-- /.Nav Bar ends -->
+                    <!--                        Functionality that allows the users to search items 
+                                            <form class="navbar-form navbar-right">
+                                                <input type="text" class="form-control" placeholder="Search...">
+                                            </form>-->
 
 
-            <!--                menu -->
+                    <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                        <c:url value="/logout" var="logoutUrl" />
+                        <!-- Protection against CRSF attack. 
+                        Hackers use Cross-Site Request Forgery attack in order to steal the cookies from the authenticated user. 
+                        Docs.spring.io, 'Spring Security Reference', 2015. [Online]. Available: http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-using. [Accessed: 09- Feb- 2015].-->
+                        <form action="${logoutUrl}" method="POST" id="logoutForm">
+                            <input type="hidden" name="${_csrf.parameterName}"
+                                   value="${_csrf.token}" />
+                        </form>
+                    </sec:authorize>
+                </div>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav><!-- /.navbar -->
 
-            <div class="itemsList">
-                <div class="col-lg-4">
-                    <img class="img-square" src="${resourcesUrl}/images/books.png" alt="Books" width="140" height="140">
-                    <h2>Books</h2>
-                    <p>Second hand books available for sale.</p>
-                    <p><a class="btn btn-default" href="#" role="button">View books &raquo;</a></p>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <img class="img-square" src="${resourcesUrl}/images/house.png" alt="Rooms" width="140" height="140">
-                    <h2>Rooms</h2>
-                    <p>Requests for accommodation. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View Rooms &raquo;</a></p>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <img class="img-square" src="${resourcesUrl}/images/star.png" alt="Favourites" width="140" height="140">
-                    <h2>Favourites</h2>
-                    <p> Please login to view your favourites. </p>
-                    <p><a class="btn btn-default" href="/favourites" role="button">View Favourites &raquo;</a></p>
-                </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
-
-            <!--                /menu-->
+    <!-- /.Nav Bar ends -->
 
 
-            <div style="position: absolute; bottom: 5px;">
-                <div class="share" style= "position: absolute; bottom: 5px;">           
-                    <div class="g-plus share-button" data-action="share"></div><br/>
-                    <a class="twitter-share-button share-button" href="https://twitter.com/share">Tweet</a><br/>
-                    <div class=" fb-share-button share-button" href="${pageContext.request.contextPath}"></div>       
-                </div> <!-- /.share -->
-            </div>
-                
+    <!--                menu -->
 
-            <!--        <hr class="featurette-divider">-->
+    <div class="itemsList">
+        <div class="col-lg-4">
+            <img class="img-square" src="${resourcesUrl}/images/books.png" alt="Books" width="140" height="140">
+            <h2>Books</h2>
+            <p>Second hand books available for sale.</p>
+            <p><a class="btn btn-default" href="#" role="button">View books &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="img-square" src="${resourcesUrl}/images/house.png" alt="Rooms" width="140" height="140">
+            <h2>Rooms</h2>
+            <p>Requests for accommodation. </p>
+            <p><a class="btn btn-default" href="#" role="button">View Rooms &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="img-square" src="${resourcesUrl}/images/star.png" alt="Favourites" width="140" height="140">
+            <h2>Favourites</h2>
+            <p> Please login to view your favourites. </p>
+            <p><a class="btn btn-default" href="/favourites" role="button">View Favourites &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
 
-            <!-- Back to top button. It appears dynamically and once clicked to page scrolls back to top smoothly -->
-            <a href="#" class="back-to-top btn btn-default">Back to Top </a> 
+    <!--                /menu-->
 
-            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-            <script src="${resourcesUrl}/js/register.js"></script>
-            
-        </body>
 
-    </html>
+    <div style="position: absolute; bottom: 5px;">
+        <div class="share" style= "position: absolute; bottom: 5px;">           
+
+            <div class="g-plus share-button" data-action="share"></div><br/>  <!--Google +--> 
+
+            <a class="twitter-share-button share-button" href="https://twitter.com/share">Tweet</a><br/> <!--Tweet button -->
+
+            <a class="fb-share-button share-button" data-href="${pageContext.request.contextPath}">Facebook</a><br/>
+
+
+        </div>
+    </div> <!-- /.share -->
+
+
+
+    <!--        <hr class="featurette-divider">-->
+
+    <!-- Back to top button. It appears dynamically and once clicked to page scrolls back to top smoothly -->
+    <a href="#" class="back-to-top btn btn-default">Back to Top </a> 
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="${resourcesUrl}/js/register.js"></script>
+
+</body>
+
+</html>

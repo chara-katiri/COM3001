@@ -106,7 +106,7 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="home">
                 <div class="jumbotron">
-                    <h1>Welcome to Pinboard <c:out value="${pageContext.request.userPrincipal.name}" /></h1>
+                    <h2>Welcome to Pinboard <c:out value="${pageContext.request.userPrincipal.name}"/></h2>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="add">
@@ -133,11 +133,11 @@
                 <div class="itemsList"></div>
             </div> <!--tab panel--> 
         </div> <!--tab content -->
-    </div> <!--tab panel outer -->
+
 
     <div class="jumbotron" style="position: absolute; bottom: 10px;">
         <!--        Functionality to allow the user navigate back to Home page-->
-        <p><a class="btn btn-primary btn-lg" href="/Pinboard/index">Back to Pinboard homepage </a></p>
+        <p><a class="btn btn-primary btn-lg" href="index">Back to Pinboard homepage </a></p>
     </div>
 
     <!-- Back to top button. It appears dynamically and once clicked to page scrolls back to top smoothly -->

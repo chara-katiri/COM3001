@@ -19,6 +19,7 @@ public class Home {
         /*
          *return statement returns the name of the home page file     
          */
+        
         //if he's logged in then show me the manage link 
         return "index";
     }

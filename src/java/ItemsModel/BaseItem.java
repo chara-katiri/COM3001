@@ -94,6 +94,10 @@ public class BaseItem implements IItem {
         return price;
     }
 
+    
+        public Double getDPrice() {
+        return (Double)price;
+    }
     /*
     Mutator method for price
      */

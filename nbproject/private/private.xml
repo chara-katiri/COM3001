@@ -6,7 +6,10 @@
             <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/ItemsModel/IItem.java</file>
             <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/Controller/Items.java</file>
             <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/ItemsModel/BaseItem.java</file>
-            <file>file:/Users/CharaKatiri/Documents/Pinboard/web/WEB-INF/jsp/index.jsp</file>
+            <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/UtilsService/DatabaseConnection.java</file>
+            <file>file:/Users/CharaKatiri/Documents/Pinboard/src/java/UserModel/User.java</file>
+            <file>file:/Users/CharaKatiri/Documents/Pinboard/web/WEB-INF/jsp/admin.jsp</file>
+            <file>file:/Users/CharaKatiri/Documents/Pinboard/web/resources/js/itemsList.js</file>
         </group>
     </open-files>
 </project-private>
