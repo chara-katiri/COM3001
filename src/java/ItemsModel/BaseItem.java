@@ -48,14 +48,14 @@ public class BaseItem implements IItem {
    Accessor method for id
    */
   
-    public int getid() {
+   public int getid() {
         return id;
     }
 
     /*
     mutator method for id
     */
-    public void setId (int id){
+   public void setId (int id){
        this.id = id; 
     }
 
@@ -117,9 +117,8 @@ public class BaseItem implements IItem {
      */
     public void setCategory(String category) {
         this.category = category;
-    }
+    } 
 
-   
-          
-  
+
 }
+

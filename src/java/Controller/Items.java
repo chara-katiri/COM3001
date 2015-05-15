@@ -3,6 +3,7 @@ package Controller;
 import ItemsModel.BaseItem;
 import ItemsModel.IItem;
 import ItemsModel.BookItem;
+import static ItemsModel.ItemType.BOOKS;
 import ItemsModel.RoomItem;
 import UtilsService.DatabaseConnection;
 import java.security.Principal;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/items")
@@ -38,6 +40,7 @@ public class Items {
         String queryItems = "SELECT * FROM items;";
         return constructItemsList(queryItems);
     }
+
 
     /*
      *Request Mapping to the database and retrive only the items that the currently logged in user set as favourites. 
@@ -84,9 +87,6 @@ public class Items {
 
         String insertItem = "INSERT INTO items (Title, Description, Price, Category) VALUES (?, ?, ?, ?);";
 
-        
-//        String insertItem = "INSERT INTO 'items' (?, ?, ?, ?) VALUES (?, ?, ?, ?);";
-
                 System.out.println ("Item="+
                 item.getTitle()+ item.getDescription()+ item.getPrice()+ item.getCategory());
         dbConnection.executeSQL(insertItem,
@@ -95,6 +95,7 @@ public class Items {
         return "admin";
     }
 
+    
     @Secured("ROLE_ADMIN")    //Process to allow admins remove items from the database. Parameter 'item' is the item to be removed.  
     @RequestMapping(value = "/manage/remove", method = RequestMethod.POST)
     public String removeItem(int itemId) {
@@ -104,11 +105,12 @@ public class Items {
         return "admin";
     }
 
+    
     /*
      *Create a list that contains all the items that need to be returned to the user. 
      *Parameter 'sqlQuery' defines the items that need to be returned. 
      *Parameter 'params' defines the parameters for the SQL query.
-     */
+     */    
     private List<IItem> constructItemsList(String sqlQuery, Object... params) {
         List<IItem> items = new ArrayList<>(); // creation of empty array list for the items
 
@@ -125,7 +127,18 @@ public class Items {
                 String category = (String) r.get("Category");
                 Map flags = null;
 
-                if ("BOOKS".equals(category)) {
+/*                items.add(
+                            new BookItem(
+                                    id,
+                                    title,
+                                    description,
+                                    price,
+                                    category,
+                                    flags
+                            )
+                    ); */
+                
+                if (BOOKS.equals(category)) {
                     items.add(
                             new BookItem(
                                     id,
@@ -158,4 +171,5 @@ public class Items {
         }
         return items;
     }
+
 }

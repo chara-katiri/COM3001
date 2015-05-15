@@ -19,21 +19,21 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
 
         <!--Internal CSS Files-->
-        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/itemsList.css" />       
         <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/default.css" />
-
+        <link rel="stylesheet" type="text/css" href="${resourcesUrl}/css/itemsList.css" />      
 
         <!--External JavaScript Files-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- JQuery -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script> <!-- JQuery Form Validator -->
         <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google+ Share -->
 
         <!--Internal JavaScript Files-->
-        <script src="${resourcesUrl}/js/itemsList.js"></script>
-        <script src="${resourcesUrl}/js/share.js"></script>
-        <script src="${resourcesUrl}/js/utils.js"></script>       
+        <script src="${resourcesUrl}/js/utils.js"></script> 
+        <script src="${resourcesUrl}/js/share.js"></script>        
+        <script src="${resourcesUrl}/js/itemsList.js"></script> 
         <script src="${resourcesUrl}/js/default.js"></script>
 
-    <div id="fb-root"></div>
+    <div id="fb-root"></div> <!-- share Facebook button-->
     <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id))
@@ -43,7 +43,6 @@
             js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-
 
 </head>
 
@@ -76,14 +75,16 @@
                 <a class="navbar-brand" href="#">Pinboard</a>
             </div><!-- /.navbar-header -->
 
-            <div id="navbar" class="active">
-                <div class="nav navbar-nav">
+            <!--            <div id="navbar" class="active">-->
+            <div id="navbar" class="collapse navbar-collapse">
+
+                <ul class="nav navbar-nav">
                     <c:url value='/favourites' var="favouritesUrl" />
                     <li><a href="${favouritesUrl}">Favourites</a></li>
 
                     <c:choose>
                         <c:when test="${pageContext.request.userPrincipal.name != null}">
-                            <li><a>Welcome <c:out value="${pageContext.request.userPrincipal.name}" /></a></li>
+                            <li><a>Welcome <c:out value="${pageContext.request.userPrincipal.name}"/> </a></li>
                             <li><a href="javascript:formSubmit()">Logout</a></li>
 
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -99,23 +100,11 @@
                                 <li><a href="/login">Login</a></li>
 
                             <c:url value='/register' var="registerUrl" />
-                            <li><a href="/register">Register</a></li>                                 
-                            </c:otherwise>
-
+                            <li><a href="/register">Register</a></li> 
+                                                
+                       </c:otherwise>
                     </c:choose>        
-
-
-                    <!--                        <ul>
-                                                <li class="active"><a href="/favourites">Favourites</a></li>
-                                                <li><a href="/login">Login</a></li>
-                                                <li><a href="/register">Register</a></li>
-                                            </ul>-->
-
-                    <!--                        Functionality that allows the users to search items 
-                                            <form class="navbar-form navbar-right">
-                                                <input type="text" class="form-control" placeholder="Search...">
-                                            </form>-->
-
+     
 
                     <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
                         <c:url value="/logout" var="logoutUrl" />
@@ -127,8 +116,12 @@
                                    value="${_csrf.token}" />
                         </form>
                     </sec:authorize>
-                </div>
-            </div><!-- /.navbar-collapse -->
+                </ul>
+            <!--                                            Functionality that allows the users to search items -->
+                            <form class="navbar-form navbar-right">
+                                <input type="text" class="form-control" placeholder="Search...">
+                            </form>                    
+            </div><!-- /.navbar-collapse -->           
         </div><!-- /.container -->
     </nav><!-- /.navbar -->
 
@@ -143,13 +136,17 @@
             <h2>Books</h2>
             <p>Second hand books available for sale.</p>
             <p><a class="btn btn-default" href="#" role="button">View books &raquo;</a></p>
+            <div class ="itemsList"></div>
         </div><!-- /.col-lg-4 -->
+
         <div class="col-lg-4">
             <img class="img-square" src="${resourcesUrl}/images/house.png" alt="Rooms" width="140" height="140">
             <h2>Rooms</h2>
             <p>Requests for accommodation. </p>
             <p><a class="btn btn-default" href="#" role="button">View Rooms &raquo;</a></p>
+            <div class ="itemsList"></div>
         </div><!-- /.col-lg-4 -->
+
         <div class="col-lg-4">
             <img class="img-square" src="${resourcesUrl}/images/star.png" alt="Favourites" width="140" height="140">
             <h2>Favourites</h2>
@@ -157,8 +154,8 @@
             <p><a class="btn btn-default" href="/favourites" role="button">View Favourites &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
-
     <!--                /menu-->
+
 
 
     <div style="position: absolute; bottom: 5px;">
