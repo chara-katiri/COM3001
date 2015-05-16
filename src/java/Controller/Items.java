@@ -17,6 +17,8 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,7 +43,22 @@ public class Items {
         return constructItemsList(queryItems);
     }
 
-
+    /*
+     @RequestMapping(value ="/viewItems", method=RequestMethod.GET)
+     public ModelAndView items(){
+     return new ModelAndView ("viewItems", "command", new BaseItem());
+     }
+    
+     @RequestMapping(value ="manage/add", method=RequestMethod.POST)
+     public String addItem (@ModelAttribute("SpringWeb")BaseItem items, ModelMap model){
+     model.addAttribute("Items_ID", items.getid());
+     model.addAttribute("title", items.getTitle());
+     model.addAttribute("price", items.getPrice());
+     model.addAttribute("description", items.getDescription());
+     model.addAttribute("category", items.getCategory());
+               
+     return "viewResult";
+     }*/
     /*
      *Request Mapping to the database and retrive only the items that the currently logged in user set as favourites. 
      */
@@ -51,7 +68,6 @@ public class Items {
     /*
      *Get the user details autowired using Principal principal. Collect the details of the user currently logged in. 
      */
-//  public List<IItem> getItemsFavourites(Principal principal) throws SQLException {
     public List<IItem> getItemsFavourites(Principal principal) {
         String queryFavourites = "SELECT i.Items_ID, i.Title, i.Description, i.Price, i.Category "
                 + "FROM items i "
@@ -87,15 +103,15 @@ public class Items {
 
         String insertItem = "INSERT INTO items (Title, Description, Price, Category) VALUES (?, ?, ?, ?);";
 
-                System.out.println ("Item="+
-                item.getTitle()+ item.getDescription()+ item.getPrice()+ item.getCategory());
+        System.out.println("Item="
+                + item.getTitle() + item.getDescription() + item.getPrice() + item.getCategory());
+
         dbConnection.executeSQL(insertItem,
                 item.getTitle(), item.getDescription(), item.getDPrice(), item.getCategory());
 
         return "admin";
     }
 
-    
     @Secured("ROLE_ADMIN")    //Process to allow admins remove items from the database. Parameter 'item' is the item to be removed.  
     @RequestMapping(value = "/manage/remove", method = RequestMethod.POST)
     public String removeItem(int itemId) {
@@ -105,12 +121,11 @@ public class Items {
         return "admin";
     }
 
-    
     /*
      *Create a list that contains all the items that need to be returned to the user. 
      *Parameter 'sqlQuery' defines the items that need to be returned. 
      *Parameter 'params' defines the parameters for the SQL query.
-     */    
+     */
     private List<IItem> constructItemsList(String sqlQuery, Object... params) {
         List<IItem> items = new ArrayList<>(); // creation of empty array list for the items
 
@@ -127,17 +142,16 @@ public class Items {
                 String category = (String) r.get("Category");
                 Map flags = null;
 
-/*                items.add(
-                            new BookItem(
-                                    id,
-                                    title,
-                                    description,
-                                    price,
-                                    category,
-                                    flags
-                            )
-                    ); */
-                
+                /*                items.add(
+                 new BookItem(
+                 id,
+                 title,
+                 description,
+                 price,
+                 category,
+                 flags
+                 )
+                 ); */
                 if (BOOKS.equals(category)) {
                     items.add(
                             new BookItem(

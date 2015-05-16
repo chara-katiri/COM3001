@@ -47,42 +47,7 @@
     <body>
         <div id="pageContextPath" data-page-context="${pageContext.request.contextPath}"></div>
         <div id="csrfToken" name="${_csrf.parameterName}" data-csrf-token="${_csrf.token}"></div>
-
-        <!--        <script>
-                    function formSubmit() {
-                        document.getElementById("logoutForm").submit();
-                    }
-                </script>-->
-
-        <!--        <div role="tabpanel">
-                <nav class="navbar navbar-fixed-top navbar-inverse" role="tabpanel">
         
-                               added here starts  ****
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="#">Pinboard</a>
-                        </div> /.navbar-header 
-        
-                        <div id="navbar" class="active">
-                            <ul class="nav navbar-nav">
-        
-                                <li><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                                <li><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add Item</a></li>
-                                <li><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete Item</a></li>
-        
-                            </ul>
-                        </div> -->
-
-        <!--      added here finishes      ****-->
-
-
-
         <!-- Creation of different tabs on navigation menu: Home, Add Item, Delete Item  
              data-toggle="tab" is used to create tab components. 
         -->
@@ -110,9 +75,8 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="add">
-                
-                <c:url value='/items/manage/add' var="addUrl"></c:url>
 
+<                  <c:url value='/items/manage/add' var="addUrl"></c:url>
                     <form class="form" id="registrationForm" action="${addUrl}" method="POST">
                     <h2 class="form-heading">Pin New Item on Pinboard</h2>
 
@@ -120,11 +84,6 @@
                     <input class="form-control" type="text" name="description" placeholder="Description" />
                     <input class="form-control" type="double" name="price" placeholder="Price" />
                     <input class="form-control last input" type="text" name="category" placeholder="Category"/> 
-                    <!--                            <select>
-                                                    <option value=“BOOK”>Books</option>
-                                                    <option value=“ROOM”>Rooms</option>
-                                                </select>-->
-
                     <input class="btn btn-lg btn-primary btn-block" type="submit" value="Add" />
                     <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 </form>

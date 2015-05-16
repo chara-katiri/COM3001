@@ -1,5 +1,7 @@
 {
-    "elements": {},
+    "elements": {
+        "form:form": {}
+    },
     "attributes": {
         "scr": {
             "context": "script"
